@@ -1,0 +1,5651 @@
+---
+title: INEC IReV API v1.0.0
+language_tabs:
+  - shell: Shell
+  - http: HTTP
+  - javascript: JavaScript
+  - ruby: Ruby
+  - python: Python
+  - php: PHP
+  - java: Java
+  - go: Go
+toc_footers: []
+includes: []
+search: true
+highlight_theme: darkula
+headingLevel: 2
+
+---
+
+<!-- Generator: Widdershins v4.0.1 -->
+
+<h1 id="inec-irev-api">INEC IReV API v1.0.0</h1>
+
+> Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
+
+Base URLs:
+
+* <a href="https://irev-v2.herokuapp.com">https://irev-v2.herokuapp.com</a>
+
+<h1 id="inec-irev-api-default">Default</h1>
+
+## post__api_v1_login
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://irev-v2.herokuapp.com/api/v1/login \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST https://irev-v2.herokuapp.com/api/v1/login HTTP/1.1
+Host: irev-v2.herokuapp.com
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  "email": "string",
+  "password": "string"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json'
+};
+
+fetch('https://irev-v2.herokuapp.com/api/v1/login',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'https://irev-v2.herokuapp.com/api/v1/login',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('https://irev-v2.herokuapp.com/api/v1/login', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','https://irev-v2.herokuapp.com/api/v1/login', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://irev-v2.herokuapp.com/api/v1/login");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "https://irev-v2.herokuapp.com/api/v1/login", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /api/v1/login`
+
+*POST login*
+
+> Body parameter
+
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+<h3 id="post__api_v1_login-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|object|false|none|
+|» email|body|string|false|none|
+|» password|body|string|false|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "success": true,
+  "user": {
+    "phone_country_code": "+234",
+    "yob": 0,
+    "mob": 0,
+    "dayob": 0,
+    "profile_pic_url": "",
+    "profile_thumbnail_url": "",
+    "status": 1,
+    "tags": [],
+    "settings": null,
+    "location": null,
+    "profile": null,
+    "last_active_at": 1677493552538,
+    "require_new_password": false,
+    "source": "WEB",
+    "is_not_nigerian": false,
+    "_id": "63fb88fd8cb4f70014737882",
+    "first_name": "Chiziaruhoma",
+    "last_name": "Ogbonda",
+    "email": "chiziaruhoma@gmail.com",
+    "phone": "",
+    "country_code": "NG",
+    "international_phone_number": "",
+    "state": {
+      "status": "ACTIVE",
+      "_id": "5f0eb6e16dda22674979bf42",
+      "presidential_id": 1,
+      "presidential": "5f0eb67db39f166717b8411f",
+      "name": "RIVERS",
+      "code": "32",
+      "state_id": 33,
+      "created_at": "2020-07-15T07:57:21.989Z",
+      "updated_at": "2020-07-15T07:57:21.989Z",
+      "__v": 0
+    },
+    "created_at": "2023-02-26T16:29:49.648Z",
+    "updated_at": "2023-02-27T10:25:52.538Z",
+    "__v": 0,
+    "identifier": "bbaa1041-75ae-448d-93da-012fb649a991",
+    "full_name": "Chiziaruhoma Ogbonda",
+    "id": "63fb88fd8cb4f70014737882"
+  },
+  "token": ""
+}
+```
+
+> 404 Response
+
+```json
+{
+  "success": false,
+  "error_code": 8,
+  "message": "Invalid email or password"
+}
+```
+
+<h3 id="post__api_v1_login-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|Inline|
+
+<h3 id="post__api_v1_login-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» success|boolean|false|none|none|
+|» user|object|false|none|none|
+|»» phone_country_code|string|false|none|none|
+|»» yob|number|false|none|none|
+|»» mob|number|false|none|none|
+|»» dayob|number|false|none|none|
+|»» profile_pic_url|string|false|none|none|
+|»» profile_thumbnail_url|string|false|none|none|
+|»» status|number|false|none|none|
+|»» tags|[any]|false|none|none|
+|»» settings|object|false|none|none|
+|»» location|object|false|none|none|
+|»» profile|object|false|none|none|
+|»» last_active_at|number|false|none|none|
+|»» require_new_password|boolean|false|none|none|
+|»» source|string|false|none|none|
+|»» is_not_nigerian|boolean|false|none|none|
+|»» _id|string|false|none|none|
+|»» first_name|string|false|none|none|
+|»» last_name|string|false|none|none|
+|»» email|string|false|none|none|
+|»» phone|string|false|none|none|
+|»» country_code|string|false|none|none|
+|»» international_phone_number|string|false|none|none|
+|»» state|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» presidential_id|number|false|none|none|
+|»»» presidential|string|false|none|none|
+|»»» name|string|false|none|none|
+|»»» code|string|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» created_at|string|false|none|none|
+|»» updated_at|string|false|none|none|
+|»» __v|number|false|none|none|
+|»» identifier|string|false|none|none|
+|»» full_name|string|false|none|none|
+|»» id|string|false|none|none|
+|» token|string|false|none|none|
+
+Status Code **404**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» success|boolean|false|none|none|
+|» error_code|number|false|none|none|
+|» message|string|false|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_elections
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://irev-v2.herokuapp.com/api/v1/elections \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://irev-v2.herokuapp.com/api/v1/elections HTTP/1.1
+Host: irev-v2.herokuapp.com
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://irev-v2.herokuapp.com/api/v1/elections',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://irev-v2.herokuapp.com/api/v1/elections',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://irev-v2.herokuapp.com/api/v1/elections', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://irev-v2.herokuapp.com/api/v1/elections', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://irev-v2.herokuapp.com/api/v1/elections");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://irev-v2.herokuapp.com/api/v1/elections", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /api/v1/elections`
+
+*GET elections*
+
+> Example responses
+
+> 401 Response
+
+```json
+{
+  "success": false,
+  "error_code": 19,
+  "message": "unable to validate user from token"
+}
+```
+
+<h3 id="get__api_v1_elections-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|Inline|
+
+<h3 id="get__api_v1_elections-responseschema">Response Schema</h3>
+
+Status Code **401**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» success|boolean|false|none|none|
+|» error_code|number|false|none|none|
+|» message|string|false|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_election-types
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://irev-v2.herokuapp.com/api/v1/election-types \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://irev-v2.herokuapp.com/api/v1/election-types HTTP/1.1
+Host: irev-v2.herokuapp.com
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://irev-v2.herokuapp.com/api/v1/election-types',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://irev-v2.herokuapp.com/api/v1/election-types',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://irev-v2.herokuapp.com/api/v1/election-types', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://irev-v2.herokuapp.com/api/v1/election-types', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://irev-v2.herokuapp.com/api/v1/election-types");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://irev-v2.herokuapp.com/api/v1/election-types", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /api/v1/election-types`
+
+*GET election-types*
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "success": true,
+  "request_time": 1677494285981,
+  "data": [
+    {
+      "status": "ACTIVE",
+      "_id": "5f129a04df41d910dcdc1d50",
+      "name": "Presidential election",
+      "code": "PRES",
+      "election_type_id": 1,
+      "created_at": "2020-07-18T06:43:16.075Z",
+      "updated_at": "2020-07-18T06:43:16.075Z",
+      "__v": 0
+    },
+    {
+      "status": "ACTIVE",
+      "_id": "5f129a04df41d910dcdc1d51",
+      "name": "Governorship election",
+      "code": "GOV",
+      "election_type_id": 2,
+      "created_at": "2020-07-18T06:43:16.641Z",
+      "updated_at": "2020-07-18T06:43:16.641Z",
+      "__v": 0
+    },
+    {
+      "status": "ACTIVE",
+      "_id": "5f129a04df41d910dcdc1d52",
+      "name": "Senatorial election",
+      "code": "SEN",
+      "election_type_id": 3,
+      "created_at": "2020-07-18T06:43:16.811Z",
+      "updated_at": "2020-07-18T06:43:16.811Z",
+      "__v": 0
+    },
+    {
+      "status": "ACTIVE",
+      "_id": "5f129a04df41d910dcdc1d53",
+      "name": "House of Representatives election",
+      "code": "REPS",
+      "election_type_id": 4,
+      "created_at": "2020-07-18T06:43:16.847Z",
+      "updated_at": "2020-07-18T06:43:16.847Z",
+      "__v": 0
+    },
+    {
+      "status": "ACTIVE",
+      "_id": "5f129a04df41d910dcdc1d54",
+      "name": "House of Assemby election",
+      "code": "ASSEMBLY",
+      "election_type_id": 5,
+      "created_at": "2020-07-18T06:43:16.884Z",
+      "updated_at": "2020-07-18T06:43:16.884Z",
+      "__v": 0
+    },
+    {
+      "status": "ACTIVE",
+      "_id": "5f129a04df41d910dcdc1d55",
+      "name": "Chairmanship",
+      "code": "CHAIRMAN",
+      "election_type_id": 6,
+      "created_at": "2020-07-18T06:43:16.929Z",
+      "updated_at": "2020-07-18T06:43:16.929Z",
+      "__v": 0
+    },
+    {
+      "status": "ACTIVE",
+      "_id": "5f129a04df41d910dcdc1d56",
+      "name": "Councillor",
+      "code": "COUNCILLOR",
+      "election_type_id": 7,
+      "created_at": "2020-07-18T06:43:16.971Z",
+      "updated_at": "2020-07-18T06:43:16.971Z",
+      "__v": 0
+    }
+  ]
+}
+```
+
+<h3 id="get__api_v1_election-types-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+
+<h3 id="get__api_v1_election-types-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» success|boolean|false|none|none|
+|» request_time|number|false|none|none|
+|» data|[object]|false|none|none|
+|»» status|string|false|none|none|
+|»» _id|string|false|none|none|
+|»» name|string|false|none|none|
+|»» code|string|false|none|none|
+|»» election_type_id|number|false|none|none|
+|»» created_at|string|false|none|none|
+|»» updated_at|string|false|none|none|
+|»» __v|number|false|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_elections_{election_id}_lga_state_{id}
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/state/{id} \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/state/{id} HTTP/1.1
+Host: irev-v2.herokuapp.com
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/state/{id}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/state/{id}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/state/{id}', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/state/{id}', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/state/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/state/{id}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /api/v1/elections/{election_id}/lga/state/{id}`
+
+*GET state by id*
+
+<h3 id="get__api_v1_elections_{election_id}_lga_state_{id}-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|election_id|path|string|true|none|
+|id|path|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "success": true,
+  "request_time": 1677494441616,
+  "data": [
+    {
+      "wards": [
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a368f77bb3acad08d99",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3103,
+          "lga": "5f0f397a4d89fc3a883de0c0",
+          "state_constituency_id": 4,
+          "state_constituency": "5f0f371993d20b39ceee1fb9",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "EZIAMA",
+          "code": "01",
+          "old_name": "",
+          "ward_id": 17526,
+          "created_at": "2020-07-15T17:17:42.813Z",
+          "updated_at": "2020-07-15T17:17:42.813Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a368f77bb3acad08d9a",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3103,
+          "lga": "5f0f397a4d89fc3a883de0c0",
+          "state_constituency_id": 4,
+          "state_constituency": "5f0f371993d20b39ceee1fb9",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "INDUSTRIAL AREA",
+          "code": "02",
+          "old_name": "",
+          "ward_id": 17527,
+          "created_at": "2020-07-15T17:17:42.987Z",
+          "updated_at": "2020-07-15T17:17:42.987Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a378f77bb3acad08d9b",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3103,
+          "lga": "5f0f397a4d89fc3a883de0c0",
+          "state_constituency_id": 4,
+          "state_constituency": "5f0f371993d20b39ceee1fb9",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "OSUSU I",
+          "code": "03",
+          "old_name": "",
+          "ward_id": 17528,
+          "created_at": "2020-07-15T17:17:43.164Z",
+          "updated_at": "2020-07-15T17:17:43.164Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a378f77bb3acad08d9c",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3103,
+          "lga": "5f0f397a4d89fc3a883de0c0",
+          "state_constituency_id": 4,
+          "state_constituency": "5f0f371993d20b39ceee1fb9",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "OSUSU II",
+          "code": "04",
+          "old_name": "",
+          "ward_id": 17529,
+          "created_at": "2020-07-15T17:17:43.313Z",
+          "updated_at": "2020-07-15T17:17:43.313Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a378f77bb3acad08d9d",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3103,
+          "lga": "5f0f397a4d89fc3a883de0c0",
+          "state_constituency_id": 4,
+          "state_constituency": "5f0f371993d20b39ceee1fb9",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "ST.EUGENES BY OKIGWE RD.",
+          "code": "05",
+          "old_name": "",
+          "ward_id": 17530,
+          "created_at": "2020-07-15T17:17:43.457Z",
+          "updated_at": "2020-07-15T17:17:43.457Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a378f77bb3acad08d9e",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3103,
+          "lga": "5f0f397a4d89fc3a883de0c0",
+          "state_constituency_id": 4,
+          "state_constituency": "5f0f371993d20b39ceee1fb9",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "URATTA",
+          "code": "06",
+          "old_name": "",
+          "ward_id": 17531,
+          "created_at": "2020-07-15T17:17:43.599Z",
+          "updated_at": "2020-07-15T17:17:43.599Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a378f77bb3acad08d9f",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3103,
+          "lga": "5f0f397a4d89fc3a883de0c0",
+          "state_constituency_id": 4,
+          "state_constituency": "5f0f371993d20b39ceee1fb9",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "OLD ABA GRA",
+          "code": "07",
+          "old_name": "",
+          "ward_id": 17532,
+          "created_at": "2020-07-15T17:17:43.740Z",
+          "updated_at": "2020-07-15T17:17:43.740Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a378f77bb3acad08da0",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3103,
+          "lga": "5f0f397a4d89fc3a883de0c0",
+          "state_constituency_id": 6,
+          "state_constituency": "5f0f371993d20b39ceee1fba",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "UMUOLA",
+          "code": "08",
+          "old_name": "",
+          "ward_id": 17533,
+          "created_at": "2020-07-15T17:17:43.883Z",
+          "updated_at": "2020-07-15T17:17:43.883Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a388f77bb3acad08da1",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3103,
+          "lga": "5f0f397a4d89fc3a883de0c0",
+          "state_constituency_id": 4,
+          "state_constituency": "5f0f371993d20b39ceee1fb9",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "ARIARIA MARKET",
+          "code": "09",
+          "old_name": "",
+          "ward_id": 17534,
+          "created_at": "2020-07-15T17:17:44.034Z",
+          "updated_at": "2020-07-15T17:17:44.034Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a388f77bb3acad08da2",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3103,
+          "lga": "5f0f397a4d89fc3a883de0c0",
+          "state_constituency_id": 6,
+          "state_constituency": "5f0f371993d20b39ceee1fba",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "OGBOR I",
+          "code": "10",
+          "old_name": "",
+          "ward_id": 17535,
+          "created_at": "2020-07-15T17:17:44.198Z",
+          "updated_at": "2020-07-15T17:17:44.198Z",
+          "__v": 0
+        }
+      ],
+      "election_wards": [],
+      "status": "ACTIVE",
+      "is_mapped": false,
+      "_id": "63f8f290594e164f8146c34f",
+      "lga": {
+        "status": "ACTIVE",
+        "_id": "5f0f397a4d89fc3a883de0c0",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "name": "ABA NORTH",
+        "code": "01",
+        "lga_id": 3103,
+        "created_at": "2020-07-15T17:14:34.782Z",
+        "updated_at": "2020-07-15T17:14:34.782Z",
+        "__v": 0
+      },
+      "election": {
+        "status": "ACTIVE",
+        "version": 3,
+        "is_mapped": false,
+        "_id": "63f8f25b594e164f8146a213",
+        "full_name": "Presidential election - 2023-02-25 - Presidential",
+        "election_id": 1292,
+        "domain_id": 1,
+        "domain_type": "App\\Models\\Presidential",
+        "election_type_id": 1,
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "election_date": "2023-02-25T00:00:00.000Z",
+        "domain": "5f0eb67db39f166717b8411f",
+        "election_type": "5f129a04df41d910dcdc1d50",
+        "onModel": "Presidential",
+        "created_at": "2023-02-24T17:22:35.081Z",
+        "updated_at": "2023-02-24T17:22:35.081Z",
+        "__v": 0
+      },
+      "election_id": 1292,
+      "state": {
+        "status": "ACTIVE",
+        "_id": "5f0eb6e06dda22674979bf22",
+        "presidential_id": 1,
+        "presidential": "5f0eb67db39f166717b8411f",
+        "name": "ABIA",
+        "code": "01",
+        "state_id": 1,
+        "created_at": "2020-07-15T07:57:20.749Z",
+        "updated_at": "2020-07-15T07:57:20.749Z",
+        "__v": 0
+      },
+      "created_at": "2023-02-24T17:23:28.841Z",
+      "updated_at": "2023-02-24T17:23:28.841Z",
+      "__v": 0
+    },
+    {
+      "wards": [
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3c8f77bb3acad08dbc",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3106,
+          "lga": "5f0f397b4d89fc3a883de0c3",
+          "state_constituency_id": 8,
+          "state_constituency": "5f0f371993d20b39ceee1fbc",
+          "federal_constituency_id": 4,
+          "federal_constituency": "5f0f37f32d77c83a06f0f314",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "AMANKALU/AKOLIUFU",
+          "code": "01",
+          "old_name": "",
+          "ward_id": 17561,
+          "created_at": "2020-07-15T17:17:48.123Z",
+          "updated_at": "2020-07-15T17:17:48.123Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3c8f77bb3acad08dbd",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3106,
+          "lga": "5f0f397b4d89fc3a883de0c3",
+          "state_constituency_id": 9,
+          "state_constituency": "5f0f371993d20b39ceee1fbd",
+          "federal_constituency_id": 4,
+          "federal_constituency": "5f0f37f32d77c83a06f0f314",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "BENDE",
+          "code": "02",
+          "old_name": "",
+          "ward_id": 17562,
+          "created_at": "2020-07-15T17:17:48.293Z",
+          "updated_at": "2020-07-15T17:17:48.293Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3c8f77bb3acad08dbe",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3106,
+          "lga": "5f0f397b4d89fc3a883de0c3",
+          "state_constituency_id": 8,
+          "state_constituency": "5f0f371993d20b39ceee1fbc",
+          "federal_constituency_id": 4,
+          "federal_constituency": "5f0f37f32d77c83a06f0f314",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "UGWUEKE/EZEUKWU",
+          "code": "03",
+          "old_name": "",
+          "ward_id": 17563,
+          "created_at": "2020-07-15T17:17:48.447Z",
+          "updated_at": "2020-07-15T17:17:48.447Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3c8f77bb3acad08dbf",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3106,
+          "lga": "5f0f397b4d89fc3a883de0c3",
+          "state_constituency_id": 8,
+          "state_constituency": "5f0f371993d20b39ceee1fbc",
+          "federal_constituency_id": 4,
+          "federal_constituency": "5f0f37f32d77c83a06f0f314",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "IGBERE 'A'",
+          "code": "04",
+          "old_name": "",
+          "ward_id": 17564,
+          "created_at": "2020-07-15T17:17:48.606Z",
+          "updated_at": "2020-07-15T17:17:48.606Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3c8f77bb3acad08dc0",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3106,
+          "lga": "5f0f397b4d89fc3a883de0c3",
+          "state_constituency_id": 8,
+          "state_constituency": "5f0f371993d20b39ceee1fbc",
+          "federal_constituency_id": 4,
+          "federal_constituency": "5f0f37f32d77c83a06f0f314",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "IGBERE 'B'",
+          "code": "05",
+          "old_name": "",
+          "ward_id": 17565,
+          "created_at": "2020-07-15T17:17:48.763Z",
+          "updated_at": "2020-07-15T17:17:48.763Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3c8f77bb3acad08dc1",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3106,
+          "lga": "5f0f397b4d89fc3a883de0c3",
+          "state_constituency_id": 8,
+          "state_constituency": "5f0f371993d20b39ceee1fbc",
+          "federal_constituency_id": 4,
+          "federal_constituency": "5f0f37f32d77c83a06f0f314",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "ITEM A",
+          "code": "06",
+          "old_name": "",
+          "ward_id": 17566,
+          "created_at": "2020-07-15T17:17:48.911Z",
+          "updated_at": "2020-07-15T17:17:48.911Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3d8f77bb3acad08dc2",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3106,
+          "lga": "5f0f397b4d89fc3a883de0c3",
+          "state_constituency_id": 8,
+          "state_constituency": "5f0f371993d20b39ceee1fbc",
+          "federal_constituency_id": 4,
+          "federal_constituency": "5f0f37f32d77c83a06f0f314",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "ITEM B",
+          "code": "07",
+          "old_name": "",
+          "ward_id": 17567,
+          "created_at": "2020-07-15T17:17:49.054Z",
+          "updated_at": "2020-07-15T17:17:49.054Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3d8f77bb3acad08dc3",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3106,
+          "lga": "5f0f397b4d89fc3a883de0c3",
+          "state_constituency_id": 8,
+          "state_constituency": "5f0f371993d20b39ceee1fbc",
+          "federal_constituency_id": 4,
+          "federal_constituency": "5f0f37f32d77c83a06f0f314",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "ITEM C",
+          "code": "08",
+          "old_name": "",
+          "ward_id": 17568,
+          "created_at": "2020-07-15T17:17:49.193Z",
+          "updated_at": "2020-07-15T17:17:49.193Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3d8f77bb3acad08dc4",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3106,
+          "lga": "5f0f397b4d89fc3a883de0c3",
+          "state_constituency_id": 9,
+          "state_constituency": "5f0f371993d20b39ceee1fbd",
+          "federal_constituency_id": 4,
+          "federal_constituency": "5f0f37f32d77c83a06f0f314",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "ITUMBAUZO",
+          "code": "09",
+          "old_name": "",
+          "ward_id": 17569,
+          "created_at": "2020-07-15T17:17:49.346Z",
+          "updated_at": "2020-07-15T17:17:49.346Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3d8f77bb3acad08dc5",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3106,
+          "lga": "5f0f397b4d89fc3a883de0c3",
+          "state_constituency_id": 9,
+          "state_constituency": "5f0f371993d20b39ceee1fbd",
+          "federal_constituency_id": 4,
+          "federal_constituency": "5f0f37f32d77c83a06f0f314",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "OZUITEM",
+          "code": "10",
+          "old_name": "",
+          "ward_id": 17570,
+          "created_at": "2020-07-15T17:17:49.504Z",
+          "updated_at": "2020-07-15T17:17:49.504Z",
+          "__v": 0
+        }
+      ],
+      "election_wards": [],
+      "status": "ACTIVE",
+      "is_mapped": false,
+      "_id": "63f8f290594e164f8146c352",
+      "lga": {
+        "status": "ACTIVE",
+        "_id": "5f0f397b4d89fc3a883de0c3",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "name": "BENDE",
+        "code": "04",
+        "lga_id": 3106,
+        "created_at": "2020-07-15T17:14:35.227Z",
+        "updated_at": "2020-07-15T17:14:35.227Z",
+        "__v": 0
+      },
+      "election": {
+        "status": "ACTIVE",
+        "version": 3,
+        "is_mapped": false,
+        "_id": "63f8f25b594e164f8146a213",
+        "full_name": "Presidential election - 2023-02-25 - Presidential",
+        "election_id": 1292,
+        "domain_id": 1,
+        "domain_type": "App\\Models\\Presidential",
+        "election_type_id": 1,
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "election_date": "2023-02-25T00:00:00.000Z",
+        "domain": "5f0eb67db39f166717b8411f",
+        "election_type": "5f129a04df41d910dcdc1d50",
+        "onModel": "Presidential",
+        "created_at": "2023-02-24T17:22:35.081Z",
+        "updated_at": "2023-02-24T17:22:35.081Z",
+        "__v": 0
+      },
+      "election_id": 1292,
+      "state": {
+        "status": "ACTIVE",
+        "_id": "5f0eb6e06dda22674979bf22",
+        "presidential_id": 1,
+        "presidential": "5f0eb67db39f166717b8411f",
+        "name": "ABIA",
+        "code": "01",
+        "state_id": 1,
+        "created_at": "2020-07-15T07:57:20.749Z",
+        "updated_at": "2020-07-15T07:57:20.749Z",
+        "__v": 0
+      },
+      "created_at": "2023-02-24T17:23:28.841Z",
+      "updated_at": "2023-02-24T17:23:28.841Z",
+      "__v": 0
+    },
+    {
+      "wards": [
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3a8f77bb3acad08db1",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3105,
+          "lga": "5f0f397b4d89fc3a883de0c2",
+          "state_constituency_id": 7,
+          "state_constituency": "5f0f371993d20b39ceee1fbb",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "OVUKWU",
+          "code": "01",
+          "old_name": "",
+          "ward_id": 17550,
+          "created_at": "2020-07-15T17:17:46.437Z",
+          "updated_at": "2020-07-15T17:17:46.437Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3a8f77bb3acad08db2",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3105,
+          "lga": "5f0f397b4d89fc3a883de0c2",
+          "state_constituency_id": 7,
+          "state_constituency": "5f0f371993d20b39ceee1fbb",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "OHAEKE",
+          "code": "02",
+          "old_name": "",
+          "ward_id": 17551,
+          "created_at": "2020-07-15T17:17:46.569Z",
+          "updated_at": "2020-07-15T17:17:46.569Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3a8f77bb3acad08db3",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3105,
+          "lga": "5f0f397b4d89fc3a883de0c2",
+          "state_constituency_id": 7,
+          "state_constituency": "5f0f371993d20b39ceee1fbb",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "OHAFOR I",
+          "code": "03",
+          "old_name": "",
+          "ward_id": 17552,
+          "created_at": "2020-07-15T17:17:46.731Z",
+          "updated_at": "2020-07-15T17:17:46.731Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3a8f77bb3acad08db4",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3105,
+          "lga": "5f0f397b4d89fc3a883de0c2",
+          "state_constituency_id": 7,
+          "state_constituency": "5f0f371993d20b39ceee1fbb",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "OHAFOR II",
+          "code": "04",
+          "old_name": "",
+          "ward_id": 17553,
+          "created_at": "2020-07-15T17:17:46.902Z",
+          "updated_at": "2020-07-15T17:17:46.902Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3b8f77bb3acad08db5",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3105,
+          "lga": "5f0f397b4d89fc3a883de0c2",
+          "state_constituency_id": 7,
+          "state_constituency": "5f0f371993d20b39ceee1fbb",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "AROCHUKWU I",
+          "code": "05",
+          "old_name": "",
+          "ward_id": 17554,
+          "created_at": "2020-07-15T17:17:47.070Z",
+          "updated_at": "2020-07-15T17:17:47.070Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3b8f77bb3acad08db6",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3105,
+          "lga": "5f0f397b4d89fc3a883de0c2",
+          "state_constituency_id": 7,
+          "state_constituency": "5f0f371993d20b39ceee1fbb",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "AROCHUKWU II",
+          "code": "06",
+          "old_name": "",
+          "ward_id": 17555,
+          "created_at": "2020-07-15T17:17:47.206Z",
+          "updated_at": "2020-07-15T17:17:47.206Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3b8f77bb3acad08db7",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3105,
+          "lga": "5f0f397b4d89fc3a883de0c2",
+          "state_constituency_id": 7,
+          "state_constituency": "5f0f371993d20b39ceee1fbb",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "IKWUN IHECHIOWA",
+          "code": "07",
+          "old_name": "",
+          "ward_id": 17556,
+          "created_at": "2020-07-15T17:17:47.354Z",
+          "updated_at": "2020-07-15T17:17:47.354Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3b8f77bb3acad08db8",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3105,
+          "lga": "5f0f397b4d89fc3a883de0c2",
+          "state_constituency_id": 7,
+          "state_constituency": "5f0f371993d20b39ceee1fbb",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "ELEOHA IHECHIOWA",
+          "code": "08",
+          "old_name": "",
+          "ward_id": 17557,
+          "created_at": "2020-07-15T17:17:47.502Z",
+          "updated_at": "2020-07-15T17:17:47.502Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3b8f77bb3acad08db9",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3105,
+          "lga": "5f0f397b4d89fc3a883de0c2",
+          "state_constituency_id": 7,
+          "state_constituency": "5f0f371993d20b39ceee1fbb",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "UTUTU",
+          "code": "09",
+          "old_name": "",
+          "ward_id": 17558,
+          "created_at": "2020-07-15T17:17:47.661Z",
+          "updated_at": "2020-07-15T17:17:47.661Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3b8f77bb3acad08dba",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3105,
+          "lga": "5f0f397b4d89fc3a883de0c2",
+          "state_constituency_id": 7,
+          "state_constituency": "5f0f371993d20b39ceee1fbb",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "ISU",
+          "code": "10",
+          "old_name": "",
+          "ward_id": 17559,
+          "created_at": "2020-07-15T17:17:47.802Z",
+          "updated_at": "2020-07-15T17:17:47.802Z",
+          "__v": 0
+        }
+      ],
+      "election_wards": [],
+      "status": "ACTIVE",
+      "is_mapped": false,
+      "_id": "63f8f290594e164f8146c351",
+      "lga": {
+        "status": "ACTIVE",
+        "_id": "5f0f397b4d89fc3a883de0c2",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "name": "AROCHUKWU",
+        "code": "03",
+        "lga_id": 3105,
+        "created_at": "2020-07-15T17:14:35.156Z",
+        "updated_at": "2020-07-15T17:14:35.156Z",
+        "__v": 0
+      },
+      "election": {
+        "status": "ACTIVE",
+        "version": 3,
+        "is_mapped": false,
+        "_id": "63f8f25b594e164f8146a213",
+        "full_name": "Presidential election - 2023-02-25 - Presidential",
+        "election_id": 1292,
+        "domain_id": 1,
+        "domain_type": "App\\Models\\Presidential",
+        "election_type_id": 1,
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "election_date": "2023-02-25T00:00:00.000Z",
+        "domain": "5f0eb67db39f166717b8411f",
+        "election_type": "5f129a04df41d910dcdc1d50",
+        "onModel": "Presidential",
+        "created_at": "2023-02-24T17:22:35.081Z",
+        "updated_at": "2023-02-24T17:22:35.081Z",
+        "__v": 0
+      },
+      "election_id": 1292,
+      "state": {
+        "status": "ACTIVE",
+        "_id": "5f0eb6e06dda22674979bf22",
+        "presidential_id": 1,
+        "presidential": "5f0eb67db39f166717b8411f",
+        "name": "ABIA",
+        "code": "01",
+        "state_id": 1,
+        "created_at": "2020-07-15T07:57:20.749Z",
+        "updated_at": "2020-07-15T07:57:20.749Z",
+        "__v": 0
+      },
+      "created_at": "2023-02-24T17:23:28.841Z",
+      "updated_at": "2023-02-24T17:23:28.841Z",
+      "__v": 0
+    },
+    {
+      "wards": [
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a388f77bb3acad08da5",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3104,
+          "lga": "5f0f397b4d89fc3a883de0c1",
+          "state_constituency_id": 3,
+          "state_constituency": "5f0f371993d20b39ceee1fb8",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "EZIUKWU",
+          "code": "01",
+          "old_name": "",
+          "ward_id": 17538,
+          "created_at": "2020-07-15T17:17:44.699Z",
+          "updated_at": "2020-07-15T17:17:44.699Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a388f77bb3acad08da6",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3104,
+          "lga": "5f0f397b4d89fc3a883de0c1",
+          "state_constituency_id": 3,
+          "state_constituency": "5f0f371993d20b39ceee1fb8",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "ASA",
+          "code": "02",
+          "old_name": "",
+          "ward_id": 17539,
+          "created_at": "2020-07-15T17:17:44.858Z",
+          "updated_at": "2020-07-15T17:17:44.858Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a388f77bb3acad08da7",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3104,
+          "lga": "5f0f397b4d89fc3a883de0c1",
+          "state_constituency_id": 3,
+          "state_constituency": "5f0f371993d20b39ceee1fb8",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "ENYIMBA",
+          "code": "03",
+          "old_name": "",
+          "ward_id": 17540,
+          "created_at": "2020-07-15T17:17:44.992Z",
+          "updated_at": "2020-07-15T17:17:44.992Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a398f77bb3acad08da8",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3104,
+          "lga": "5f0f397b4d89fc3a883de0c1",
+          "state_constituency_id": 3,
+          "state_constituency": "5f0f371993d20b39ceee1fb8",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "NGWA",
+          "code": "04",
+          "old_name": "",
+          "ward_id": 17541,
+          "created_at": "2020-07-15T17:17:45.139Z",
+          "updated_at": "2020-07-15T17:17:45.139Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a398f77bb3acad08da9",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3104,
+          "lga": "5f0f397b4d89fc3a883de0c1",
+          "state_constituency_id": 3,
+          "state_constituency": "5f0f371993d20b39ceee1fb8",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "OHAZU I",
+          "code": "05",
+          "old_name": "",
+          "ward_id": 17542,
+          "created_at": "2020-07-15T17:17:45.276Z",
+          "updated_at": "2020-07-15T17:17:45.276Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a398f77bb3acad08daa",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3104,
+          "lga": "5f0f397b4d89fc3a883de0c1",
+          "state_constituency_id": 3,
+          "state_constituency": "5f0f371993d20b39ceee1fb8",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "OHAZU II",
+          "code": "06",
+          "old_name": "",
+          "ward_id": 17543,
+          "created_at": "2020-07-15T17:17:45.433Z",
+          "updated_at": "2020-07-15T17:17:45.433Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a398f77bb3acad08dab",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3104,
+          "lga": "5f0f397b4d89fc3a883de0c1",
+          "state_constituency_id": 3,
+          "state_constituency": "5f0f371993d20b39ceee1fb8",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "IGWEBUIKE",
+          "code": "07",
+          "old_name": "",
+          "ward_id": 17544,
+          "created_at": "2020-07-15T17:17:45.572Z",
+          "updated_at": "2020-07-15T17:17:45.572Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a398f77bb3acad08dac",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3104,
+          "lga": "5f0f397b4d89fc3a883de0c1",
+          "state_constituency_id": 6,
+          "state_constituency": "5f0f371993d20b39ceee1fba",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "EKEOHA",
+          "code": "08",
+          "old_name": "",
+          "ward_id": 17545,
+          "created_at": "2020-07-15T17:17:45.703Z",
+          "updated_at": "2020-07-15T17:17:45.703Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a398f77bb3acad08dad",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3104,
+          "lga": "5f0f397b4d89fc3a883de0c1",
+          "state_constituency_id": 6,
+          "state_constituency": "5f0f371993d20b39ceee1fba",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "GLOUCESTER",
+          "code": "09",
+          "old_name": "",
+          "ward_id": 17546,
+          "created_at": "2020-07-15T17:17:45.854Z",
+          "updated_at": "2020-07-15T17:17:45.854Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a398f77bb3acad08dae",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3104,
+          "lga": "5f0f397b4d89fc3a883de0c1",
+          "state_constituency_id": 6,
+          "state_constituency": "5f0f371993d20b39ceee1fba",
+          "federal_constituency_id": 2,
+          "federal_constituency": "5f0f37f32d77c83a06f0f312",
+          "senatorial_district_id": 111,
+          "senatorial_district": "5f0f3958970bd83a6f453a18",
+          "name": "MOSQUE",
+          "code": "10",
+          "old_name": "",
+          "ward_id": 17547,
+          "created_at": "2020-07-15T17:17:45.990Z",
+          "updated_at": "2020-07-15T17:17:45.990Z",
+          "__v": 0
+        }
+      ],
+      "election_wards": [],
+      "status": "ACTIVE",
+      "is_mapped": false,
+      "_id": "63f8f290594e164f8146c350",
+      "lga": {
+        "status": "ACTIVE",
+        "_id": "5f0f397b4d89fc3a883de0c1",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "name": "ABA SOUTH",
+        "code": "02",
+        "lga_id": 3104,
+        "created_at": "2020-07-15T17:14:35.080Z",
+        "updated_at": "2020-07-15T17:14:35.080Z",
+        "__v": 0
+      },
+      "election": {
+        "status": "ACTIVE",
+        "version": 3,
+        "is_mapped": false,
+        "_id": "63f8f25b594e164f8146a213",
+        "full_name": "Presidential election - 2023-02-25 - Presidential",
+        "election_id": 1292,
+        "domain_id": 1,
+        "domain_type": "App\\Models\\Presidential",
+        "election_type_id": 1,
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "election_date": "2023-02-25T00:00:00.000Z",
+        "domain": "5f0eb67db39f166717b8411f",
+        "election_type": "5f129a04df41d910dcdc1d50",
+        "onModel": "Presidential",
+        "created_at": "2023-02-24T17:22:35.081Z",
+        "updated_at": "2023-02-24T17:22:35.081Z",
+        "__v": 0
+      },
+      "election_id": 1292,
+      "state": {
+        "status": "ACTIVE",
+        "_id": "5f0eb6e06dda22674979bf22",
+        "presidential_id": 1,
+        "presidential": "5f0eb67db39f166717b8411f",
+        "name": "ABIA",
+        "code": "01",
+        "state_id": 1,
+        "created_at": "2020-07-15T07:57:20.749Z",
+        "updated_at": "2020-07-15T07:57:20.749Z",
+        "__v": 0
+      },
+      "created_at": "2023-02-24T17:23:28.841Z",
+      "updated_at": "2023-02-24T17:23:28.841Z",
+      "__v": 0
+    },
+    {
+      "wards": [
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3e8f77bb3acad08dc9",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3107,
+          "lga": "5f0f397b4d89fc3a883de0c4",
+          "state_constituency_id": 10,
+          "state_constituency": "5f0f371a93d20b39ceee1fbe",
+          "federal_constituency_id": 8,
+          "federal_constituency": "5f0f37f32d77c83a06f0f318",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OLOKO I",
+          "code": "01",
+          "old_name": "",
+          "ward_id": 17574,
+          "created_at": "2020-07-15T17:17:50.043Z",
+          "updated_at": "2020-07-15T17:17:50.043Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3e8f77bb3acad08dca",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3107,
+          "lga": "5f0f397b4d89fc3a883de0c4",
+          "state_constituency_id": 10,
+          "state_constituency": "5f0f371a93d20b39ceee1fbe",
+          "federal_constituency_id": 8,
+          "federal_constituency": "5f0f37f32d77c83a06f0f318",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OLOKO II",
+          "code": "02",
+          "old_name": "",
+          "ward_id": 17575,
+          "created_at": "2020-07-15T17:17:50.184Z",
+          "updated_at": "2020-07-15T17:17:50.184Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3e8f77bb3acad08dcb",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3107,
+          "lga": "5f0f397b4d89fc3a883de0c4",
+          "state_constituency_id": 10,
+          "state_constituency": "5f0f371a93d20b39ceee1fbe",
+          "federal_constituency_id": 8,
+          "federal_constituency": "5f0f37f32d77c83a06f0f318",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "IBERE I",
+          "code": "03",
+          "old_name": "",
+          "ward_id": 17576,
+          "created_at": "2020-07-15T17:17:50.350Z",
+          "updated_at": "2020-07-15T17:17:50.350Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3e8f77bb3acad08dcc",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3107,
+          "lga": "5f0f397b4d89fc3a883de0c4",
+          "state_constituency_id": 10,
+          "state_constituency": "5f0f371a93d20b39ceee1fbe",
+          "federal_constituency_id": 8,
+          "federal_constituency": "5f0f37f32d77c83a06f0f318",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "IBERE II",
+          "code": "04",
+          "old_name": "",
+          "ward_id": 17577,
+          "created_at": "2020-07-15T17:17:50.511Z",
+          "updated_at": "2020-07-15T17:17:50.511Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3e8f77bb3acad08dcd",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3107,
+          "lga": "5f0f397b4d89fc3a883de0c4",
+          "state_constituency_id": 10,
+          "state_constituency": "5f0f371a93d20b39ceee1fbe",
+          "federal_constituency_id": 8,
+          "federal_constituency": "5f0f37f32d77c83a06f0f318",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OBORO I",
+          "code": "05",
+          "old_name": "",
+          "ward_id": 17578,
+          "created_at": "2020-07-15T17:17:50.657Z",
+          "updated_at": "2020-07-15T17:17:50.657Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3e8f77bb3acad08dce",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3107,
+          "lga": "5f0f397b4d89fc3a883de0c4",
+          "state_constituency_id": 10,
+          "state_constituency": "5f0f371a93d20b39ceee1fbe",
+          "federal_constituency_id": 8,
+          "federal_constituency": "5f0f37f32d77c83a06f0f318",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OBORO II",
+          "code": "06",
+          "old_name": "",
+          "ward_id": 17579,
+          "created_at": "2020-07-15T17:17:50.802Z",
+          "updated_at": "2020-07-15T17:17:50.802Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3e8f77bb3acad08dcf",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3107,
+          "lga": "5f0f397b4d89fc3a883de0c4",
+          "state_constituency_id": 10,
+          "state_constituency": "5f0f371a93d20b39ceee1fbe",
+          "federal_constituency_id": 8,
+          "federal_constituency": "5f0f37f32d77c83a06f0f318",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OBORO III",
+          "code": "07",
+          "old_name": "",
+          "ward_id": 17580,
+          "created_at": "2020-07-15T17:17:50.943Z",
+          "updated_at": "2020-07-15T17:17:50.943Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3f8f77bb3acad08dd0",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3107,
+          "lga": "5f0f397b4d89fc3a883de0c4",
+          "state_constituency_id": 10,
+          "state_constituency": "5f0f371a93d20b39ceee1fbe",
+          "federal_constituency_id": 8,
+          "federal_constituency": "5f0f37f32d77c83a06f0f318",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OBORO IV",
+          "code": "08",
+          "old_name": "",
+          "ward_id": 17581,
+          "created_at": "2020-07-15T17:17:51.100Z",
+          "updated_at": "2020-07-15T17:17:51.100Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3f8f77bb3acad08dd1",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3107,
+          "lga": "5f0f397b4d89fc3a883de0c4",
+          "state_constituency_id": 10,
+          "state_constituency": "5f0f371a93d20b39ceee1fbe",
+          "federal_constituency_id": 8,
+          "federal_constituency": "5f0f37f32d77c83a06f0f318",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "ARIAM",
+          "code": "09",
+          "old_name": "",
+          "ward_id": 17582,
+          "created_at": "2020-07-15T17:17:51.242Z",
+          "updated_at": "2020-07-15T17:17:51.242Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3f8f77bb3acad08dd2",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3107,
+          "lga": "5f0f397b4d89fc3a883de0c4",
+          "state_constituency_id": 10,
+          "state_constituency": "5f0f371a93d20b39ceee1fbe",
+          "federal_constituency_id": 8,
+          "federal_constituency": "5f0f37f32d77c83a06f0f318",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "USAKA",
+          "code": "10",
+          "old_name": "",
+          "ward_id": 17583,
+          "created_at": "2020-07-15T17:17:51.410Z",
+          "updated_at": "2020-07-15T17:17:51.410Z",
+          "__v": 0
+        }
+      ],
+      "election_wards": [],
+      "status": "ACTIVE",
+      "is_mapped": false,
+      "_id": "63f8f290594e164f8146c353",
+      "lga": {
+        "status": "ACTIVE",
+        "_id": "5f0f397b4d89fc3a883de0c4",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "name": "IKWUANO",
+        "code": "05",
+        "lga_id": 3107,
+        "created_at": "2020-07-15T17:14:35.309Z",
+        "updated_at": "2020-07-15T17:14:35.309Z",
+        "__v": 0
+      },
+      "election": {
+        "status": "ACTIVE",
+        "version": 3,
+        "is_mapped": false,
+        "_id": "63f8f25b594e164f8146a213",
+        "full_name": "Presidential election - 2023-02-25 - Presidential",
+        "election_id": 1292,
+        "domain_id": 1,
+        "domain_type": "App\\Models\\Presidential",
+        "election_type_id": 1,
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "election_date": "2023-02-25T00:00:00.000Z",
+        "domain": "5f0eb67db39f166717b8411f",
+        "election_type": "5f129a04df41d910dcdc1d50",
+        "onModel": "Presidential",
+        "created_at": "2023-02-24T17:22:35.081Z",
+        "updated_at": "2023-02-24T17:22:35.081Z",
+        "__v": 0
+      },
+      "election_id": 1292,
+      "state": {
+        "status": "ACTIVE",
+        "_id": "5f0eb6e06dda22674979bf22",
+        "presidential_id": 1,
+        "presidential": "5f0eb67db39f166717b8411f",
+        "name": "ABIA",
+        "code": "01",
+        "state_id": 1,
+        "created_at": "2020-07-15T07:57:20.749Z",
+        "updated_at": "2020-07-15T07:57:20.749Z",
+        "__v": 0
+      },
+      "created_at": "2023-02-24T17:23:28.841Z",
+      "updated_at": "2023-02-24T17:23:28.841Z",
+      "__v": 0
+    },
+    {
+      "wards": [
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a458f77bb3acad08dfc",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3112,
+          "lga": "5f0f397b4d89fc3a883de0c9",
+          "state_constituency_id": 17,
+          "state_constituency": "5f0f371a93d20b39ceee1fc5",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "ISIAMA OHAFIA",
+          "code": "01",
+          "old_name": "",
+          "ward_id": 17625,
+          "created_at": "2020-07-15T17:17:57.446Z",
+          "updated_at": "2020-07-15T17:17:57.446Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a458f77bb3acad08dfd",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3112,
+          "lga": "5f0f397b4d89fc3a883de0c9",
+          "state_constituency_id": 17,
+          "state_constituency": "5f0f371a93d20b39ceee1fc5",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "EBEM OHAFIA",
+          "code": "02",
+          "old_name": "",
+          "ward_id": 17626,
+          "created_at": "2020-07-15T17:17:57.595Z",
+          "updated_at": "2020-07-15T17:17:57.595Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a458f77bb3acad08dfe",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3112,
+          "lga": "5f0f397b4d89fc3a883de0c9",
+          "state_constituency_id": 16,
+          "state_constituency": "5f0f371a93d20b39ceee1fc4",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "NDI ELU NKPORO",
+          "code": "03",
+          "old_name": "",
+          "ward_id": 17627,
+          "created_at": "2020-07-15T17:17:57.753Z",
+          "updated_at": "2020-07-15T17:17:57.753Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a458f77bb3acad08dff",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3112,
+          "lga": "5f0f397b4d89fc3a883de0c9",
+          "state_constituency_id": 16,
+          "state_constituency": "5f0f371a93d20b39ceee1fc4",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "NDI ETITI NKPORO",
+          "code": "04",
+          "old_name": "",
+          "ward_id": 17628,
+          "created_at": "2020-07-15T17:17:57.893Z",
+          "updated_at": "2020-07-15T17:17:57.893Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a468f77bb3acad08e00",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3112,
+          "lga": "5f0f397b4d89fc3a883de0c9",
+          "state_constituency_id": 16,
+          "state_constituency": "5f0f371a93d20b39ceee1fc4",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "AMAEKE ABIRIBA",
+          "code": "05",
+          "old_name": "",
+          "ward_id": 17629,
+          "created_at": "2020-07-15T17:17:58.042Z",
+          "updated_at": "2020-07-15T17:17:58.042Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a468f77bb3acad08e01",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3112,
+          "lga": "5f0f397b4d89fc3a883de0c9",
+          "state_constituency_id": 16,
+          "state_constituency": "5f0f371a93d20b39ceee1fc4",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "AMAOGUDU ABIRIBA",
+          "code": "06",
+          "old_name": "",
+          "ward_id": 17630,
+          "created_at": "2020-07-15T17:17:58.229Z",
+          "updated_at": "2020-07-15T17:17:58.229Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a468f77bb3acad08e02",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3112,
+          "lga": "5f0f397b4d89fc3a883de0c9",
+          "state_constituency_id": 16,
+          "state_constituency": "5f0f371a93d20b39ceee1fc4",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "AGBOJI ABIRIBA",
+          "code": "07",
+          "old_name": "",
+          "ward_id": 17631,
+          "created_at": "2020-07-15T17:17:58.371Z",
+          "updated_at": "2020-07-15T17:17:58.371Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a468f77bb3acad08e03",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3112,
+          "lga": "5f0f397b4d89fc3a883de0c9",
+          "state_constituency_id": 17,
+          "state_constituency": "5f0f371a93d20b39ceee1fc5",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "OHAFOR OHAFIA",
+          "code": "08",
+          "old_name": "",
+          "ward_id": 17632,
+          "created_at": "2020-07-15T17:17:58.520Z",
+          "updated_at": "2020-07-15T17:17:58.520Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a468f77bb3acad08e04",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3112,
+          "lga": "5f0f397b4d89fc3a883de0c9",
+          "state_constituency_id": 17,
+          "state_constituency": "5f0f371a93d20b39ceee1fc5",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "OKAMU OHAFIA",
+          "code": "09",
+          "old_name": "",
+          "ward_id": 17633,
+          "created_at": "2020-07-15T17:17:58.649Z",
+          "updated_at": "2020-07-15T17:17:58.649Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a468f77bb3acad08e05",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3112,
+          "lga": "5f0f397b4d89fc3a883de0c9",
+          "state_constituency_id": 17,
+          "state_constituency": "5f0f371a93d20b39ceee1fc5",
+          "federal_constituency_id": 3,
+          "federal_constituency": "5f0f37f32d77c83a06f0f313",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "ANIA OHOAFIA",
+          "code": "10",
+          "old_name": "",
+          "ward_id": 17634,
+          "created_at": "2020-07-15T17:17:58.797Z",
+          "updated_at": "2020-07-15T17:17:58.797Z",
+          "__v": 0
+        }
+      ],
+      "election_wards": [],
+      "status": "ACTIVE",
+      "is_mapped": false,
+      "_id": "63f8f290594e164f8146c358",
+      "lga": {
+        "status": "ACTIVE",
+        "_id": "5f0f397b4d89fc3a883de0c9",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "name": "OHAFIA",
+        "code": "10",
+        "lga_id": 3112,
+        "created_at": "2020-07-15T17:14:35.635Z",
+        "updated_at": "2020-07-15T17:14:35.635Z",
+        "__v": 0
+      },
+      "election": {
+        "status": "ACTIVE",
+        "version": 3,
+        "is_mapped": false,
+        "_id": "63f8f25b594e164f8146a213",
+        "full_name": "Presidential election - 2023-02-25 - Presidential",
+        "election_id": 1292,
+        "domain_id": 1,
+        "domain_type": "App\\Models\\Presidential",
+        "election_type_id": 1,
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "election_date": "2023-02-25T00:00:00.000Z",
+        "domain": "5f0eb67db39f166717b8411f",
+        "election_type": "5f129a04df41d910dcdc1d50",
+        "onModel": "Presidential",
+        "created_at": "2023-02-24T17:22:35.081Z",
+        "updated_at": "2023-02-24T17:22:35.081Z",
+        "__v": 0
+      },
+      "election_id": 1292,
+      "state": {
+        "status": "ACTIVE",
+        "_id": "5f0eb6e06dda22674979bf22",
+        "presidential_id": 1,
+        "presidential": "5f0eb67db39f166717b8411f",
+        "name": "ABIA",
+        "code": "01",
+        "state_id": 1,
+        "created_at": "2020-07-15T07:57:20.749Z",
+        "updated_at": "2020-07-15T07:57:20.749Z",
+        "__v": 0
+      },
+      "created_at": "2023-02-24T17:23:28.841Z",
+      "updated_at": "2023-02-24T17:23:28.841Z",
+      "__v": 0
+    },
+    {
+      "wards": [
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a428f77bb3acad08de7",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3110,
+          "lga": "5f0f397b4d89fc3a883de0c7",
+          "state_constituency_id": 13,
+          "state_constituency": "5f0f371a93d20b39ceee1fc1",
+          "federal_constituency_id": 6,
+          "federal_constituency": "5f0f37f32d77c83a06f0f316",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "IMENYI",
+          "code": "01",
+          "old_name": "",
+          "ward_id": 17604,
+          "created_at": "2020-07-15T17:17:54.407Z",
+          "updated_at": "2020-07-15T17:17:54.407Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a428f77bb3acad08de8",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3110,
+          "lga": "5f0f397b4d89fc3a883de0c7",
+          "state_constituency_id": 13,
+          "state_constituency": "5f0f371a93d20b39ceee1fc1",
+          "federal_constituency_id": 6,
+          "federal_constituency": "5f0f37f32d77c83a06f0f316",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "EZERE",
+          "code": "02",
+          "old_name": "",
+          "ward_id": 17605,
+          "created_at": "2020-07-15T17:17:54.553Z",
+          "updated_at": "2020-07-15T17:17:54.553Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a428f77bb3acad08de9",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3110,
+          "lga": "5f0f397b4d89fc3a883de0c7",
+          "state_constituency_id": 13,
+          "state_constituency": "5f0f371a93d20b39ceee1fc1",
+          "federal_constituency_id": 6,
+          "federal_constituency": "5f0f37f32d77c83a06f0f316",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "ISIALA AMAWU",
+          "code": "03",
+          "old_name": "",
+          "ward_id": 17606,
+          "created_at": "2020-07-15T17:17:54.692Z",
+          "updated_at": "2020-07-15T17:17:54.692Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a428f77bb3acad08dea",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3110,
+          "lga": "5f0f397b4d89fc3a883de0c7",
+          "state_constituency_id": 13,
+          "state_constituency": "5f0f371a93d20b39ceee1fc1",
+          "federal_constituency_id": 6,
+          "federal_constituency": "5f0f37f32d77c83a06f0f316",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "ISU AMAWU",
+          "code": "04",
+          "old_name": "",
+          "ward_id": 17607,
+          "created_at": "2020-07-15T17:17:54.858Z",
+          "updated_at": "2020-07-15T17:17:54.858Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a438f77bb3acad08deb",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3110,
+          "lga": "5f0f397b4d89fc3a883de0c7",
+          "state_constituency_id": 13,
+          "state_constituency": "5f0f371a93d20b39ceee1fc1",
+          "federal_constituency_id": 6,
+          "federal_constituency": "5f0f37f32d77c83a06f0f316",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "OGUNDUASA",
+          "code": "05",
+          "old_name": "",
+          "ward_id": 17608,
+          "created_at": "2020-07-15T17:17:55.019Z",
+          "updated_at": "2020-07-15T17:17:55.019Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a438f77bb3acad08dec",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3110,
+          "lga": "5f0f397b4d89fc3a883de0c7",
+          "state_constituency_id": 13,
+          "state_constituency": "5f0f371a93d20b39ceee1fc1",
+          "federal_constituency_id": 6,
+          "federal_constituency": "5f0f37f32d77c83a06f0f316",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "UMUNNEKWU",
+          "code": "06",
+          "old_name": "",
+          "ward_id": 17609,
+          "created_at": "2020-07-15T17:17:55.164Z",
+          "updated_at": "2020-07-15T17:17:55.164Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a438f77bb3acad08ded",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3110,
+          "lga": "5f0f397b4d89fc3a883de0c7",
+          "state_constituency_id": 13,
+          "state_constituency": "5f0f371a93d20b39ceee1fc1",
+          "federal_constituency_id": 6,
+          "federal_constituency": "5f0f37f32d77c83a06f0f316",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "ACHARA / MGBUGWU",
+          "code": "07",
+          "old_name": "",
+          "ward_id": 17610,
+          "created_at": "2020-07-15T17:17:55.309Z",
+          "updated_at": "2020-07-15T17:17:55.309Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a438f77bb3acad08dee",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3110,
+          "lga": "5f0f397b4d89fc3a883de0c7",
+          "state_constituency_id": 13,
+          "state_constituency": "5f0f371a93d20b39ceee1fc1",
+          "federal_constituency_id": 6,
+          "federal_constituency": "5f0f37f32d77c83a06f0f316",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "IKEAGHA I",
+          "code": "08",
+          "old_name": "",
+          "ward_id": 17611,
+          "created_at": "2020-07-15T17:17:55.456Z",
+          "updated_at": "2020-07-15T17:17:55.456Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a438f77bb3acad08def",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3110,
+          "lga": "5f0f397b4d89fc3a883de0c7",
+          "state_constituency_id": 13,
+          "state_constituency": "5f0f371a93d20b39ceee1fc1",
+          "federal_constituency_id": 6,
+          "federal_constituency": "5f0f37f32d77c83a06f0f316",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "IKEAGHA II",
+          "code": "09",
+          "old_name": "",
+          "ward_id": 17612,
+          "created_at": "2020-07-15T17:17:55.599Z",
+          "updated_at": "2020-07-15T17:17:55.599Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a438f77bb3acad08df0",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3110,
+          "lga": "5f0f397b4d89fc3a883de0c7",
+          "state_constituency_id": 13,
+          "state_constituency": "5f0f371a93d20b39ceee1fc1",
+          "federal_constituency_id": 6,
+          "federal_constituency": "5f0f37f32d77c83a06f0f316",
+          "senatorial_district_id": 2,
+          "senatorial_district": "5f0f3952970bd83a6f4539be",
+          "name": "UMUANYI / ABSU",
+          "code": "10",
+          "old_name": "",
+          "ward_id": 17613,
+          "created_at": "2020-07-15T17:17:55.734Z",
+          "updated_at": "2020-07-15T17:17:55.734Z",
+          "__v": 0
+        }
+      ],
+      "election_wards": [],
+      "status": "ACTIVE",
+      "is_mapped": false,
+      "_id": "63f8f290594e164f8146c356",
+      "lga": {
+        "status": "ACTIVE",
+        "_id": "5f0f397b4d89fc3a883de0c7",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "name": "ISUIKWUATO",
+        "code": "08",
+        "lga_id": 3110,
+        "created_at": "2020-07-15T17:14:35.501Z",
+        "updated_at": "2020-07-15T17:14:35.501Z",
+        "__v": 0
+      },
+      "election": {
+        "status": "ACTIVE",
+        "version": 3,
+        "is_mapped": false,
+        "_id": "63f8f25b594e164f8146a213",
+        "full_name": "Presidential election - 2023-02-25 - Presidential",
+        "election_id": 1292,
+        "domain_id": 1,
+        "domain_type": "App\\Models\\Presidential",
+        "election_type_id": 1,
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "election_date": "2023-02-25T00:00:00.000Z",
+        "domain": "5f0eb67db39f166717b8411f",
+        "election_type": "5f129a04df41d910dcdc1d50",
+        "onModel": "Presidential",
+        "created_at": "2023-02-24T17:22:35.081Z",
+        "updated_at": "2023-02-24T17:22:35.081Z",
+        "__v": 0
+      },
+      "election_id": 1292,
+      "state": {
+        "status": "ACTIVE",
+        "_id": "5f0eb6e06dda22674979bf22",
+        "presidential_id": 1,
+        "presidential": "5f0eb67db39f166717b8411f",
+        "name": "ABIA",
+        "code": "01",
+        "state_id": 1,
+        "created_at": "2020-07-15T07:57:20.749Z",
+        "updated_at": "2020-07-15T07:57:20.749Z",
+        "__v": 0
+      },
+      "created_at": "2023-02-24T17:23:28.841Z",
+      "updated_at": "2023-02-24T17:23:28.841Z",
+      "__v": 0
+    },
+    {
+      "wards": [
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3f8f77bb3acad08dd3",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3108,
+          "lga": "5f0f397b4d89fc3a883de0c5",
+          "state_constituency_id": 11,
+          "state_constituency": "5f0f371a93d20b39ceee1fbf",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "AMASAA NSULU",
+          "code": "01",
+          "old_name": "",
+          "ward_id": 17584,
+          "created_at": "2020-07-15T17:17:51.549Z",
+          "updated_at": "2020-07-15T17:17:51.549Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3f8f77bb3acad08dd4",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3108,
+          "lga": "5f0f397b4d89fc3a883de0c5",
+          "state_constituency_id": 11,
+          "state_constituency": "5f0f371a93d20b39ceee1fbf",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "UMUNNA NSULU",
+          "code": "02",
+          "old_name": "",
+          "ward_id": 17585,
+          "created_at": "2020-07-15T17:17:51.689Z",
+          "updated_at": "2020-07-15T17:17:51.689Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3f8f77bb3acad08dd5",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3108,
+          "lga": "5f0f397b4d89fc3a883de0c5",
+          "state_constituency_id": 11,
+          "state_constituency": "5f0f371a93d20b39ceee1fbf",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "ISIALA NSULU",
+          "code": "03",
+          "old_name": "",
+          "ward_id": 17586,
+          "created_at": "2020-07-15T17:17:51.825Z",
+          "updated_at": "2020-07-15T17:17:51.825Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a3f8f77bb3acad08dd6",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3108,
+          "lga": "5f0f397b4d89fc3a883de0c5",
+          "state_constituency_id": 11,
+          "state_constituency": "5f0f371a93d20b39ceee1fbf",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "NGWA UKWU I",
+          "code": "04",
+          "old_name": "",
+          "ward_id": 17587,
+          "created_at": "2020-07-15T17:17:51.971Z",
+          "updated_at": "2020-07-15T17:17:51.971Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a408f77bb3acad08dd7",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3108,
+          "lga": "5f0f397b4d89fc3a883de0c5",
+          "state_constituency_id": 11,
+          "state_constituency": "5f0f371a93d20b39ceee1fbf",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "NGWA UKWU II",
+          "code": "05",
+          "old_name": "",
+          "ward_id": 17588,
+          "created_at": "2020-07-15T17:17:52.099Z",
+          "updated_at": "2020-07-15T17:17:52.099Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a408f77bb3acad08dd8",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3108,
+          "lga": "5f0f397b4d89fc3a883de0c5",
+          "state_constituency_id": 11,
+          "state_constituency": "5f0f371a93d20b39ceee1fbf",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "IHIE",
+          "code": "06",
+          "old_name": "",
+          "ward_id": 17589,
+          "created_at": "2020-07-15T17:17:52.234Z",
+          "updated_at": "2020-07-15T17:17:52.234Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a408f77bb3acad08dd9",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3108,
+          "lga": "5f0f397b4d89fc3a883de0c5",
+          "state_constituency_id": 11,
+          "state_constituency": "5f0f371a93d20b39ceee1fbf",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "AMASAA NTIGHA",
+          "code": "07",
+          "old_name": "",
+          "ward_id": 17590,
+          "created_at": "2020-07-15T17:17:52.389Z",
+          "updated_at": "2020-07-15T17:17:52.389Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a408f77bb3acad08dda",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3108,
+          "lga": "5f0f397b4d89fc3a883de0c5",
+          "state_constituency_id": 11,
+          "state_constituency": "5f0f371a93d20b39ceee1fbf",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "AMAPU NTIGHA",
+          "code": "08",
+          "old_name": "",
+          "ward_id": 17591,
+          "created_at": "2020-07-15T17:17:52.527Z",
+          "updated_at": "2020-07-15T17:17:52.527Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a408f77bb3acad08ddb",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3108,
+          "lga": "5f0f397b4d89fc3a883de0c5",
+          "state_constituency_id": 11,
+          "state_constituency": "5f0f371a93d20b39ceee1fbf",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "UMUOHA",
+          "code": "09",
+          "old_name": "",
+          "ward_id": 17592,
+          "created_at": "2020-07-15T17:17:52.692Z",
+          "updated_at": "2020-07-15T17:17:52.692Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a408f77bb3acad08ddc",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3108,
+          "lga": "5f0f397b4d89fc3a883de0c5",
+          "state_constituency_id": 11,
+          "state_constituency": "5f0f371a93d20b39ceee1fbf",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "MBAWSI / UMUOMAINTA",
+          "code": "10",
+          "old_name": "",
+          "ward_id": 17593,
+          "created_at": "2020-07-15T17:17:52.824Z",
+          "updated_at": "2020-07-15T17:17:52.824Z",
+          "__v": 0
+        }
+      ],
+      "election_wards": [],
+      "status": "ACTIVE",
+      "is_mapped": false,
+      "_id": "63f8f290594e164f8146c354",
+      "lga": {
+        "status": "ACTIVE",
+        "_id": "5f0f397b4d89fc3a883de0c5",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "name": "ISIALA NGWA NORTH",
+        "code": "06",
+        "lga_id": 3108,
+        "created_at": "2020-07-15T17:14:35.371Z",
+        "updated_at": "2020-07-15T17:14:35.371Z",
+        "__v": 0
+      },
+      "election": {
+        "status": "ACTIVE",
+        "version": 3,
+        "is_mapped": false,
+        "_id": "63f8f25b594e164f8146a213",
+        "full_name": "Presidential election - 2023-02-25 - Presidential",
+        "election_id": 1292,
+        "domain_id": 1,
+        "domain_type": "App\\Models\\Presidential",
+        "election_type_id": 1,
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "election_date": "2023-02-25T00:00:00.000Z",
+        "domain": "5f0eb67db39f166717b8411f",
+        "election_type": "5f129a04df41d910dcdc1d50",
+        "onModel": "Presidential",
+        "created_at": "2023-02-24T17:22:35.081Z",
+        "updated_at": "2023-02-24T17:22:35.081Z",
+        "__v": 0
+      },
+      "election_id": 1292,
+      "state": {
+        "status": "ACTIVE",
+        "_id": "5f0eb6e06dda22674979bf22",
+        "presidential_id": 1,
+        "presidential": "5f0eb67db39f166717b8411f",
+        "name": "ABIA",
+        "code": "01",
+        "state_id": 1,
+        "created_at": "2020-07-15T07:57:20.749Z",
+        "updated_at": "2020-07-15T07:57:20.749Z",
+        "__v": 0
+      },
+      "created_at": "2023-02-24T17:23:28.841Z",
+      "updated_at": "2023-02-24T17:23:28.841Z",
+      "__v": 0
+    },
+    {
+      "wards": [
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a408f77bb3acad08ddd",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3109,
+          "lga": "5f0f397b4d89fc3a883de0c6",
+          "state_constituency_id": 12,
+          "state_constituency": "5f0f371a93d20b39ceee1fc0",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "AMAISE / AMAISE ANABA",
+          "code": "01",
+          "old_name": "",
+          "ward_id": 17594,
+          "created_at": "2020-07-15T17:17:52.973Z",
+          "updated_at": "2020-07-15T17:17:52.973Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a418f77bb3acad08dde",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3109,
+          "lga": "5f0f397b4d89fc3a883de0c6",
+          "state_constituency_id": 12,
+          "state_constituency": "5f0f371a93d20b39ceee1fc0",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "NGWAOBI",
+          "code": "02",
+          "old_name": "",
+          "ward_id": 17595,
+          "created_at": "2020-07-15T17:17:53.123Z",
+          "updated_at": "2020-07-15T17:17:53.123Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a418f77bb3acad08ddf",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3109,
+          "lga": "5f0f397b4d89fc3a883de0c6",
+          "state_constituency_id": 12,
+          "state_constituency": "5f0f371a93d20b39ceee1fc0",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "MBUTU UKWU",
+          "code": "03",
+          "old_name": "",
+          "ward_id": 17596,
+          "created_at": "2020-07-15T17:17:53.266Z",
+          "updated_at": "2020-07-15T17:17:53.266Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a418f77bb3acad08de0",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3109,
+          "lga": "5f0f397b4d89fc3a883de0c6",
+          "state_constituency_id": 12,
+          "state_constituency": "5f0f371a93d20b39ceee1fc0",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "MBUTU NGWA",
+          "code": "04",
+          "old_name": "",
+          "ward_id": 17597,
+          "created_at": "2020-07-15T17:17:53.414Z",
+          "updated_at": "2020-07-15T17:17:53.414Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a418f77bb3acad08de1",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3109,
+          "lga": "5f0f397b4d89fc3a883de0c6",
+          "state_constituency_id": 12,
+          "state_constituency": "5f0f371a93d20b39ceee1fc0",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "EHINA GURU OSOKWA",
+          "code": "05",
+          "old_name": "",
+          "ward_id": 17598,
+          "created_at": "2020-07-15T17:17:53.560Z",
+          "updated_at": "2020-07-15T17:17:53.560Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a418f77bb3acad08de2",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3109,
+          "lga": "5f0f397b4d89fc3a883de0c6",
+          "state_constituency_id": 12,
+          "state_constituency": "5f0f371a93d20b39ceee1fc0",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "AKUNEKPU EZIAMA NA OBUBA",
+          "code": "06",
+          "old_name": "",
+          "ward_id": 17599,
+          "created_at": "2020-07-15T17:17:53.705Z",
+          "updated_at": "2020-07-15T17:17:53.705Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a418f77bb3acad08de3",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3109,
+          "lga": "5f0f397b4d89fc3a883de0c6",
+          "state_constituency_id": 12,
+          "state_constituency": "5f0f371a93d20b39ceee1fc0",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OMOBA",
+          "code": "07",
+          "old_name": "",
+          "ward_id": 17600,
+          "created_at": "2020-07-15T17:17:53.854Z",
+          "updated_at": "2020-07-15T17:17:53.854Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a418f77bb3acad08de4",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3109,
+          "lga": "5f0f397b4d89fc3a883de0c6",
+          "state_constituency_id": 12,
+          "state_constituency": "5f0f371a93d20b39ceee1fc0",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OVUNGWU",
+          "code": "08",
+          "old_name": "",
+          "ward_id": 17601,
+          "created_at": "2020-07-15T17:17:53.990Z",
+          "updated_at": "2020-07-15T17:17:53.990Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a428f77bb3acad08de5",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3109,
+          "lga": "5f0f397b4d89fc3a883de0c6",
+          "state_constituency_id": 12,
+          "state_constituency": "5f0f371a93d20b39ceee1fc0",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OVUOKWU",
+          "code": "09",
+          "old_name": "",
+          "ward_id": 17602,
+          "created_at": "2020-07-15T17:17:54.125Z",
+          "updated_at": "2020-07-15T17:17:54.125Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a428f77bb3acad08de6",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3109,
+          "lga": "5f0f397b4d89fc3a883de0c6",
+          "state_constituency_id": 12,
+          "state_constituency": "5f0f371a93d20b39ceee1fc0",
+          "federal_constituency_id": 5,
+          "federal_constituency": "5f0f37f32d77c83a06f0f315",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OKPORO AHABA",
+          "code": "10",
+          "old_name": "",
+          "ward_id": 17603,
+          "created_at": "2020-07-15T17:17:54.268Z",
+          "updated_at": "2020-07-15T17:17:54.268Z",
+          "__v": 0
+        }
+      ],
+      "election_wards": [],
+      "status": "ACTIVE",
+      "is_mapped": false,
+      "_id": "63f8f290594e164f8146c355",
+      "lga": {
+        "status": "ACTIVE",
+        "_id": "5f0f397b4d89fc3a883de0c6",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "name": "ISIALA NGWA SOUTH",
+        "code": "07",
+        "lga_id": 3109,
+        "created_at": "2020-07-15T17:14:35.432Z",
+        "updated_at": "2020-07-15T17:14:35.432Z",
+        "__v": 0
+      },
+      "election": {
+        "status": "ACTIVE",
+        "version": 3,
+        "is_mapped": false,
+        "_id": "63f8f25b594e164f8146a213",
+        "full_name": "Presidential election - 2023-02-25 - Presidential",
+        "election_id": 1292,
+        "domain_id": 1,
+        "domain_type": "App\\Models\\Presidential",
+        "election_type_id": 1,
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "election_date": "2023-02-25T00:00:00.000Z",
+        "domain": "5f0eb67db39f166717b8411f",
+        "election_type": "5f129a04df41d910dcdc1d50",
+        "onModel": "Presidential",
+        "created_at": "2023-02-24T17:22:35.081Z",
+        "updated_at": "2023-02-24T17:22:35.081Z",
+        "__v": 0
+      },
+      "election_id": 1292,
+      "state": {
+        "status": "ACTIVE",
+        "_id": "5f0eb6e06dda22674979bf22",
+        "presidential_id": 1,
+        "presidential": "5f0eb67db39f166717b8411f",
+        "name": "ABIA",
+        "code": "01",
+        "state_id": 1,
+        "created_at": "2020-07-15T07:57:20.749Z",
+        "updated_at": "2020-07-15T07:57:20.749Z",
+        "__v": 0
+      },
+      "created_at": "2023-02-24T17:23:28.841Z",
+      "updated_at": "2023-02-24T17:23:28.841Z",
+      "__v": 0
+    },
+    {
+      "wards": [
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a478f77bb3acad08e07",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3113,
+          "lga": "5f0f397b4d89fc3a883de0ca",
+          "state_constituency_id": 18,
+          "state_constituency": "5f0f371a93d20b39ceee1fc6",
+          "federal_constituency_id": 7,
+          "federal_constituency": "5f0f37f32d77c83a06f0f317",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "AMAVO",
+          "code": "01",
+          "old_name": "",
+          "ward_id": 17636,
+          "created_at": "2020-07-15T17:17:59.103Z",
+          "updated_at": "2020-07-15T17:17:59.103Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a478f77bb3acad08e08",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3113,
+          "lga": "5f0f397b4d89fc3a883de0ca",
+          "state_constituency_id": 19,
+          "state_constituency": "5f0f371a93d20b39ceee1fc7",
+          "federal_constituency_id": 7,
+          "federal_constituency": "5f0f37f32d77c83a06f0f317",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "AMAITOLU MBUTU UMUOJIMA",
+          "code": "02",
+          "old_name": "",
+          "ward_id": 17637,
+          "created_at": "2020-07-15T17:17:59.243Z",
+          "updated_at": "2020-07-15T17:17:59.243Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a478f77bb3acad08e09",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3113,
+          "lga": "5f0f397b4d89fc3a883de0ca",
+          "state_constituency_id": 19,
+          "state_constituency": "5f0f371a93d20b39ceee1fc7",
+          "federal_constituency_id": 7,
+          "federal_constituency": "5f0f37f32d77c83a06f0f317",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "AMASATOR",
+          "code": "03",
+          "old_name": "",
+          "ward_id": 17638,
+          "created_at": "2020-07-15T17:17:59.373Z",
+          "updated_at": "2020-07-15T17:17:59.373Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a478f77bb3acad08e0a",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3113,
+          "lga": "5f0f397b4d89fc3a883de0ca",
+          "state_constituency_id": 18,
+          "state_constituency": "5f0f371a93d20b39ceee1fc6",
+          "federal_constituency_id": 7,
+          "federal_constituency": "5f0f37f32d77c83a06f0f317",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "ARO - NGWA",
+          "code": "04",
+          "old_name": "",
+          "ward_id": 17639,
+          "created_at": "2020-07-15T17:17:59.538Z",
+          "updated_at": "2020-07-15T17:17:59.538Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a478f77bb3acad08e0b",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3113,
+          "lga": "5f0f397b4d89fc3a883de0ca",
+          "state_constituency_id": 18,
+          "state_constituency": "5f0f371a93d20b39ceee1fc6",
+          "federal_constituency_id": 7,
+          "federal_constituency": "5f0f37f32d77c83a06f0f317",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "AMA - ASAA",
+          "code": "05",
+          "old_name": "",
+          "ward_id": 17640,
+          "created_at": "2020-07-15T17:17:59.687Z",
+          "updated_at": "2020-07-15T17:17:59.687Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a478f77bb3acad08e0c",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3113,
+          "lga": "5f0f397b4d89fc3a883de0ca",
+          "state_constituency_id": 18,
+          "state_constituency": "5f0f371a93d20b39ceee1fc6",
+          "federal_constituency_id": 7,
+          "federal_constituency": "5f0f37f32d77c83a06f0f317",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OSO - OKWA",
+          "code": "06",
+          "old_name": "",
+          "ward_id": 17641,
+          "created_at": "2020-07-15T17:17:59.822Z",
+          "updated_at": "2020-07-15T17:17:59.822Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a478f77bb3acad08e0d",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3113,
+          "lga": "5f0f397b4d89fc3a883de0ca",
+          "state_constituency_id": 19,
+          "state_constituency": "5f0f371a93d20b39ceee1fc7",
+          "federal_constituency_id": 7,
+          "federal_constituency": "5f0f37f32d77c83a06f0f317",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "URTTA",
+          "code": "07",
+          "old_name": "",
+          "ward_id": 17642,
+          "created_at": "2020-07-15T17:17:59.952Z",
+          "updated_at": "2020-07-15T17:17:59.952Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a488f77bb3acad08e0e",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3113,
+          "lga": "5f0f397b4d89fc3a883de0ca",
+          "state_constituency_id": 19,
+          "state_constituency": "5f0f371a93d20b39ceee1fc7",
+          "federal_constituency_id": 7,
+          "federal_constituency": "5f0f37f32d77c83a06f0f317",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "AMATOR",
+          "code": "08",
+          "old_name": "",
+          "ward_id": 17643,
+          "created_at": "2020-07-15T17:18:00.094Z",
+          "updated_at": "2020-07-15T17:18:00.094Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a488f77bb3acad08e0f",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3113,
+          "lga": "5f0f397b4d89fc3a883de0ca",
+          "state_constituency_id": 18,
+          "state_constituency": "5f0f371a93d20b39ceee1fc6",
+          "federal_constituency_id": 7,
+          "federal_constituency": "5f0f37f32d77c83a06f0f317",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "UMUNNEISE",
+          "code": "09",
+          "old_name": "",
+          "ward_id": 17644,
+          "created_at": "2020-07-15T17:18:00.256Z",
+          "updated_at": "2020-07-15T17:18:00.256Z",
+          "__v": 0
+        },
+        {
+          "status": "ACTIVE",
+          "_id": "5f0f3a488f77bb3acad08e10",
+          "state_id": 1,
+          "state": "5f0eb6e06dda22674979bf22",
+          "lga_id": 3113,
+          "lga": "5f0f397b4d89fc3a883de0ca",
+          "state_constituency_id": 19,
+          "state_constituency": "5f0f371a93d20b39ceee1fc7",
+          "federal_constituency_id": 7,
+          "federal_constituency": "5f0f37f32d77c83a06f0f317",
+          "senatorial_district_id": 112,
+          "senatorial_district": "5f0f3958970bd83a6f453a19",
+          "name": "OKPOR - UMUOBO",
+          "code": "10",
+          "old_name": "",
+          "ward_id": 17645,
+          "created_at": "2020-07-15T17:18:00.410Z",
+          "updated_at": "2020-07-15T17:18:00.410Z",
+          "__v": 0
+        }
+      ],
+      "election_wards": [],
+      "status": "ACTIVE",
+      "is_mapped": false,
+      "_id": "63f8f290594e164f8146c359",
+      "lga": {
+        "status": "ACTIVE",
+        "_id": "5f0f397b4d89fc3a883de0ca",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "name": "OSISIOMA",
+        "code": "11",
+        "lga_id": 3113,
+        "created_at": "2020-07-15T17:14:35.694Z",
+        "updated_at": "2020-07-15T17:14:35.694Z",
+        "__v": 0
+      },
+      "election": {
+        "status": "ACTIVE",
+        "version": 3,
+        "is_mapped": false,
+        "_id": "63f8f25b594e164f8146a213",
+        "full_name": "Presidential election - 2023-02-25 - Presidential",
+        "election_id": 1292,
+        "domain_id": 1,
+        "domain_type": "App\\Models\\Presidential",
+        "election_type_id": 1,
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "election_date": "2023-02-25T00:00:00.000Z",
+        "domain": "5f0eb67db39f166717b8411f",
+        "election_type": "5f129a04df41d910dcdc1d50",
+        "onModel": "Presidential",
+        "created_at": "2023-02-24T17:22:35.081Z",
+        "updated_at": "2023-02-24T17:22:35.081Z",
+        "__v": 0
+      },
+      "election_id": 1292,
+      "state": {
+        "status": "ACTIVE",
+        "_id": "5f0eb6e06dda22674979bf22",
+        "presidential_id": 1,
+        "presidential": "5f0eb67db39f166717b8411f",
+        "name": "ABIA",
+        "code": "01",
+        "state_id": 1,
+        "created_at": "2020-07-15T07:57:20.749Z",
+        "updated_at": "2020-07-15T07:57:20.749Z",
+        "__v": 0
+      },
+      "created_at": "2023-02-24T17:23:28.841Z",
+      "updated_at": "2023-02-24T17:23:28.841Z",
+      "__v": 0
+    }
+  ]
+}
+```
+
+<h3 id="get__api_v1_elections_{election_id}_lga_state_{id}-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+
+<h3 id="get__api_v1_elections_{election_id}_lga_state_{id}-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» success|boolean|false|none|none|
+|» request_time|number|false|none|none|
+|» data|[object]|false|none|none|
+|»» wards|[object]|false|none|none|
+|»»» status|string|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» state|string|false|none|none|
+|»»» lga_id|number|false|none|none|
+|»»» lga|string|false|none|none|
+|»»» state_constituency_id|number|false|none|none|
+|»»» state_constituency|string|false|none|none|
+|»»» federal_constituency_id|number|false|none|none|
+|»»» federal_constituency|string|false|none|none|
+|»»» senatorial_district_id|number|false|none|none|
+|»»» senatorial_district|string|false|none|none|
+|»»» name|string|false|none|none|
+|»»» code|string|false|none|none|
+|»»» old_name|string|false|none|none|
+|»»» ward_id|number|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» election_wards|[any]|false|none|none|
+|»» status|string|false|none|none|
+|»» is_mapped|boolean|false|none|none|
+|»» _id|string|false|none|none|
+|»» lga|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» state|string|false|none|none|
+|»»» name|string|false|none|none|
+|»»» code|string|false|none|none|
+|»»» lga_id|number|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» election|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» version|number|false|none|none|
+|»»» is_mapped|boolean|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» full_name|string|false|none|none|
+|»»» election_id|number|false|none|none|
+|»»» domain_id|number|false|none|none|
+|»»» domain_type|string|false|none|none|
+|»»» election_type_id|number|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» state|string|false|none|none|
+|»»» election_date|string|false|none|none|
+|»»» domain|string|false|none|none|
+|»»» election_type|string|false|none|none|
+|»»» onModel|string|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» election_id|number|false|none|none|
+|»» state|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» presidential_id|number|false|none|none|
+|»»» presidential|string|false|none|none|
+|»»» name|string|false|none|none|
+|»»» code|string|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» created_at|string|false|none|none|
+|»» updated_at|string|false|none|none|
+|»» __v|number|false|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_elections_{election_id}_result_stats
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/result/stats \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/result/stats HTTP/1.1
+Host: irev-v2.herokuapp.com
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/result/stats',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/result/stats',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/result/stats', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/result/stats', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/result/stats");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/result/stats", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /api/v1/elections/{election_id}/result/stats`
+
+*GET stats*
+
+<h3 id="get__api_v1_elections_{election_id}_result_stats-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|election_id|path|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "success": true,
+  "request_time": 1677494445023,
+  "data": {
+    "pus": 176846,
+    "documents": 54337
+  }
+}
+```
+
+<h3 id="get__api_v1_elections_{election_id}_result_stats-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+
+<h3 id="get__api_v1_elections_{election_id}_result_stats-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» success|boolean|false|none|none|
+|» request_time|number|false|none|none|
+|» data|object|false|none|none|
+|»» pus|number|false|none|none|
+|»» documents|number|false|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_elections_{election_id}_lga_{lga}
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/{lga} \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/{lga} HTTP/1.1
+Host: irev-v2.herokuapp.com
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/{lga}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/{lga}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/{lga}', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/{lga}', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/{lga}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/lga/{lga}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /api/v1/elections/{election_id}/lga/{lga}`
+
+*GET local government area by id*
+
+<h3 id="get__api_v1_elections_{election_id}_lga_{lga}-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|election_id|path|string|true|none|
+|lga|path|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "success": true,
+  "request_time": 1677494443955,
+  "data": {
+    "wards": [
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a368f77bb3acad08d99",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "EZIAMA",
+        "code": "01",
+        "old_name": "",
+        "ward_id": 17526,
+        "created_at": "2020-07-15T17:17:42.813Z",
+        "updated_at": "2020-07-15T17:17:42.813Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a368f77bb3acad08d9a",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "INDUSTRIAL AREA",
+        "code": "02",
+        "old_name": "",
+        "ward_id": 17527,
+        "created_at": "2020-07-15T17:17:42.987Z",
+        "updated_at": "2020-07-15T17:17:42.987Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08d9b",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "OSUSU I",
+        "code": "03",
+        "old_name": "",
+        "ward_id": 17528,
+        "created_at": "2020-07-15T17:17:43.164Z",
+        "updated_at": "2020-07-15T17:17:43.164Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08d9c",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "OSUSU II",
+        "code": "04",
+        "old_name": "",
+        "ward_id": 17529,
+        "created_at": "2020-07-15T17:17:43.313Z",
+        "updated_at": "2020-07-15T17:17:43.313Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08d9d",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "ST.EUGENES BY OKIGWE RD.",
+        "code": "05",
+        "old_name": "",
+        "ward_id": 17530,
+        "created_at": "2020-07-15T17:17:43.457Z",
+        "updated_at": "2020-07-15T17:17:43.457Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08d9e",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "URATTA",
+        "code": "06",
+        "old_name": "",
+        "ward_id": 17531,
+        "created_at": "2020-07-15T17:17:43.599Z",
+        "updated_at": "2020-07-15T17:17:43.599Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08d9f",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "OLD ABA GRA",
+        "code": "07",
+        "old_name": "",
+        "ward_id": 17532,
+        "created_at": "2020-07-15T17:17:43.740Z",
+        "updated_at": "2020-07-15T17:17:43.740Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08da0",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 6,
+        "state_constituency": "5f0f371993d20b39ceee1fba",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "UMUOLA",
+        "code": "08",
+        "old_name": "",
+        "ward_id": 17533,
+        "created_at": "2020-07-15T17:17:43.883Z",
+        "updated_at": "2020-07-15T17:17:43.883Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a388f77bb3acad08da1",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "ARIARIA MARKET",
+        "code": "09",
+        "old_name": "",
+        "ward_id": 17534,
+        "created_at": "2020-07-15T17:17:44.034Z",
+        "updated_at": "2020-07-15T17:17:44.034Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a388f77bb3acad08da2",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 6,
+        "state_constituency": "5f0f371993d20b39ceee1fba",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "OGBOR I",
+        "code": "10",
+        "old_name": "",
+        "ward_id": 17535,
+        "created_at": "2020-07-15T17:17:44.198Z",
+        "updated_at": "2020-07-15T17:17:44.198Z",
+        "__v": 0
+      }
+    ],
+    "election_wards": [],
+    "status": "ACTIVE",
+    "is_mapped": false,
+    "_id": "63f8f290594e164f8146c34f",
+    "lga": {
+      "status": "ACTIVE",
+      "_id": "5f0f397a4d89fc3a883de0c0",
+      "state_id": 1,
+      "state": "5f0eb6e06dda22674979bf22",
+      "name": "ABA NORTH",
+      "code": "01",
+      "lga_id": 3103,
+      "created_at": "2020-07-15T17:14:34.782Z",
+      "updated_at": "2020-07-15T17:14:34.782Z",
+      "__v": 0
+    },
+    "election": {
+      "status": "ACTIVE",
+      "version": 3,
+      "is_mapped": false,
+      "_id": "63f8f25b594e164f8146a213",
+      "full_name": "Presidential election - 2023-02-25 - Presidential",
+      "election_id": 1292,
+      "domain_id": 1,
+      "domain_type": "App\\Models\\Presidential",
+      "election_type_id": 1,
+      "state_id": 1,
+      "state": "5f0eb6e06dda22674979bf22",
+      "election_date": "2023-02-25T00:00:00.000Z",
+      "domain": "5f0eb67db39f166717b8411f",
+      "election_type": "5f129a04df41d910dcdc1d50",
+      "onModel": "Presidential",
+      "created_at": "2023-02-24T17:22:35.081Z",
+      "updated_at": "2023-02-24T17:22:35.081Z",
+      "__v": 0
+    },
+    "election_id": 1292,
+    "state": {
+      "status": "ACTIVE",
+      "_id": "5f0eb6e06dda22674979bf22",
+      "presidential_id": 1,
+      "presidential": "5f0eb67db39f166717b8411f",
+      "name": "ABIA",
+      "code": "01",
+      "state_id": 1,
+      "created_at": "2020-07-15T07:57:20.749Z",
+      "updated_at": "2020-07-15T07:57:20.749Z",
+      "__v": 0
+    },
+    "created_at": "2023-02-24T17:23:28.841Z",
+    "updated_at": "2023-02-24T17:23:28.841Z",
+    "__v": 0
+  },
+  "results": [
+    {
+      "_id": "5f0f3a388f77bb3acad08da1",
+      "count": 21
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9b",
+      "count": 30
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9d",
+      "count": 29
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9f",
+      "count": 23
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08da0",
+      "count": 39
+    },
+    {
+      "_id": "5f0f3a388f77bb3acad08da3",
+      "count": 13
+    },
+    {
+      "_id": "5f0f3a368f77bb3acad08d9a",
+      "count": 20
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9c",
+      "count": 10
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9e",
+      "count": 8
+    },
+    {
+      "_id": "5f0f3a368f77bb3acad08d99",
+      "count": 27
+    }
+  ],
+  "pus": [
+    {
+      "_id": "5f0f3a368f77bb3acad08d99",
+      "count": 57
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9d",
+      "count": 29
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9f",
+      "count": 36
+    },
+    {
+      "_id": "5f0f3a388f77bb3acad08da1",
+      "count": 92
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9e",
+      "count": 41
+    },
+    {
+      "_id": "5f0f3a388f77bb3acad08da2",
+      "count": 31
+    },
+    {
+      "_id": "5f0f3a388f77bb3acad08da3",
+      "count": 26
+    },
+    {
+      "_id": "5f0f3a388f77bb3acad08da4",
+      "count": 24
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08da0",
+      "count": 43
+    },
+    {
+      "_id": "5f0f3a368f77bb3acad08d9a",
+      "count": 45
+    }
+  ]
+}
+```
+
+<h3 id="get__api_v1_elections_{election_id}_lga_{lga}-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+
+<h3 id="get__api_v1_elections_{election_id}_lga_{lga}-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» success|boolean|false|none|none|
+|» request_time|number|false|none|none|
+|» data|object|false|none|none|
+|»» wards|[object]|false|none|none|
+|»»» status|string|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» state|string|false|none|none|
+|»»» lga_id|number|false|none|none|
+|»»» lga|string|false|none|none|
+|»»» state_constituency_id|number|false|none|none|
+|»»» state_constituency|string|false|none|none|
+|»»» federal_constituency_id|number|false|none|none|
+|»»» federal_constituency|string|false|none|none|
+|»»» senatorial_district_id|number|false|none|none|
+|»»» senatorial_district|string|false|none|none|
+|»»» name|string|false|none|none|
+|»»» code|string|false|none|none|
+|»»» old_name|string|false|none|none|
+|»»» ward_id|number|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» election_wards|[any]|false|none|none|
+|»» status|string|false|none|none|
+|»» is_mapped|boolean|false|none|none|
+|»» _id|string|false|none|none|
+|»» lga|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» state|string|false|none|none|
+|»»» name|string|false|none|none|
+|»»» code|string|false|none|none|
+|»»» lga_id|number|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» election|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» version|number|false|none|none|
+|»»» is_mapped|boolean|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» full_name|string|false|none|none|
+|»»» election_id|number|false|none|none|
+|»»» domain_id|number|false|none|none|
+|»»» domain_type|string|false|none|none|
+|»»» election_type_id|number|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» state|string|false|none|none|
+|»»» election_date|string|false|none|none|
+|»»» domain|string|false|none|none|
+|»»» election_type|string|false|none|none|
+|»»» onModel|string|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» election_id|number|false|none|none|
+|»» state|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» presidential_id|number|false|none|none|
+|»»» presidential|string|false|none|none|
+|»»» name|string|false|none|none|
+|»»» code|string|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» created_at|string|false|none|none|
+|»» updated_at|string|false|none|none|
+|»» __v|number|false|none|none|
+|» results|[object]|false|none|none|
+|»» _id|string|false|none|none|
+|»» count|number|false|none|none|
+|» pus|[object]|false|none|none|
+|»» _id|string|false|none|none|
+|»» count|number|false|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_elections_{election_id}_pus
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pus?ward=5f0f3a368f77bb3acad08d99 \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pus?ward=5f0f3a368f77bb3acad08d99 HTTP/1.1
+Host: irev-v2.herokuapp.com
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pus?ward=5f0f3a368f77bb3acad08d99',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pus',
+  params: {
+  'ward' => 'string'
+}, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pus', params={
+  'ward': '5f0f3a368f77bb3acad08d99'
+}, headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pus', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pus?ward=5f0f3a368f77bb3acad08d99");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pus", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /api/v1/elections/{election_id}/pus`
+
+*GET Polling Units by ward id*
+
+<h3 id="get__api_v1_elections_{election_id}_pus-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|election_id|path|string|true|none|
+|ward|query|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "success": true,
+  "request_time": 1677494443955,
+  "data": {
+    "wards": [
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a368f77bb3acad08d99",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "EZIAMA",
+        "code": "01",
+        "old_name": "",
+        "ward_id": 17526,
+        "created_at": "2020-07-15T17:17:42.813Z",
+        "updated_at": "2020-07-15T17:17:42.813Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a368f77bb3acad08d9a",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "INDUSTRIAL AREA",
+        "code": "02",
+        "old_name": "",
+        "ward_id": 17527,
+        "created_at": "2020-07-15T17:17:42.987Z",
+        "updated_at": "2020-07-15T17:17:42.987Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08d9b",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "OSUSU I",
+        "code": "03",
+        "old_name": "",
+        "ward_id": 17528,
+        "created_at": "2020-07-15T17:17:43.164Z",
+        "updated_at": "2020-07-15T17:17:43.164Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08d9c",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "OSUSU II",
+        "code": "04",
+        "old_name": "",
+        "ward_id": 17529,
+        "created_at": "2020-07-15T17:17:43.313Z",
+        "updated_at": "2020-07-15T17:17:43.313Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08d9d",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "ST.EUGENES BY OKIGWE RD.",
+        "code": "05",
+        "old_name": "",
+        "ward_id": 17530,
+        "created_at": "2020-07-15T17:17:43.457Z",
+        "updated_at": "2020-07-15T17:17:43.457Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08d9e",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "URATTA",
+        "code": "06",
+        "old_name": "",
+        "ward_id": 17531,
+        "created_at": "2020-07-15T17:17:43.599Z",
+        "updated_at": "2020-07-15T17:17:43.599Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08d9f",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "OLD ABA GRA",
+        "code": "07",
+        "old_name": "",
+        "ward_id": 17532,
+        "created_at": "2020-07-15T17:17:43.740Z",
+        "updated_at": "2020-07-15T17:17:43.740Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a378f77bb3acad08da0",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 6,
+        "state_constituency": "5f0f371993d20b39ceee1fba",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "UMUOLA",
+        "code": "08",
+        "old_name": "",
+        "ward_id": 17533,
+        "created_at": "2020-07-15T17:17:43.883Z",
+        "updated_at": "2020-07-15T17:17:43.883Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a388f77bb3acad08da1",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "ARIARIA MARKET",
+        "code": "09",
+        "old_name": "",
+        "ward_id": 17534,
+        "created_at": "2020-07-15T17:17:44.034Z",
+        "updated_at": "2020-07-15T17:17:44.034Z",
+        "__v": 0
+      },
+      {
+        "status": "ACTIVE",
+        "_id": "5f0f3a388f77bb3acad08da2",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 6,
+        "state_constituency": "5f0f371993d20b39ceee1fba",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "OGBOR I",
+        "code": "10",
+        "old_name": "",
+        "ward_id": 17535,
+        "created_at": "2020-07-15T17:17:44.198Z",
+        "updated_at": "2020-07-15T17:17:44.198Z",
+        "__v": 0
+      }
+    ],
+    "election_wards": [],
+    "status": "ACTIVE",
+    "is_mapped": false,
+    "_id": "63f8f290594e164f8146c34f",
+    "lga": {
+      "status": "ACTIVE",
+      "_id": "5f0f397a4d89fc3a883de0c0",
+      "state_id": 1,
+      "state": "5f0eb6e06dda22674979bf22",
+      "name": "ABA NORTH",
+      "code": "01",
+      "lga_id": 3103,
+      "created_at": "2020-07-15T17:14:34.782Z",
+      "updated_at": "2020-07-15T17:14:34.782Z",
+      "__v": 0
+    },
+    "election": {
+      "status": "ACTIVE",
+      "version": 3,
+      "is_mapped": false,
+      "_id": "63f8f25b594e164f8146a213",
+      "full_name": "Presidential election - 2023-02-25 - Presidential",
+      "election_id": 1292,
+      "domain_id": 1,
+      "domain_type": "App\\Models\\Presidential",
+      "election_type_id": 1,
+      "state_id": 1,
+      "state": "5f0eb6e06dda22674979bf22",
+      "election_date": "2023-02-25T00:00:00.000Z",
+      "domain": "5f0eb67db39f166717b8411f",
+      "election_type": "5f129a04df41d910dcdc1d50",
+      "onModel": "Presidential",
+      "created_at": "2023-02-24T17:22:35.081Z",
+      "updated_at": "2023-02-24T17:22:35.081Z",
+      "__v": 0
+    },
+    "election_id": 1292,
+    "state": {
+      "status": "ACTIVE",
+      "_id": "5f0eb6e06dda22674979bf22",
+      "presidential_id": 1,
+      "presidential": "5f0eb67db39f166717b8411f",
+      "name": "ABIA",
+      "code": "01",
+      "state_id": 1,
+      "created_at": "2020-07-15T07:57:20.749Z",
+      "updated_at": "2020-07-15T07:57:20.749Z",
+      "__v": 0
+    },
+    "created_at": "2023-02-24T17:23:28.841Z",
+    "updated_at": "2023-02-24T17:23:28.841Z",
+    "__v": 0
+  },
+  "results": [
+    {
+      "_id": "5f0f3a388f77bb3acad08da1",
+      "count": 21
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9b",
+      "count": 30
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9d",
+      "count": 29
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9f",
+      "count": 23
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08da0",
+      "count": 39
+    },
+    {
+      "_id": "5f0f3a388f77bb3acad08da3",
+      "count": 13
+    },
+    {
+      "_id": "5f0f3a368f77bb3acad08d9a",
+      "count": 20
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9c",
+      "count": 10
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9e",
+      "count": 8
+    },
+    {
+      "_id": "5f0f3a368f77bb3acad08d99",
+      "count": 27
+    }
+  ],
+  "pus": [
+    {
+      "_id": "5f0f3a368f77bb3acad08d99",
+      "count": 57
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9d",
+      "count": 29
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9f",
+      "count": 36
+    },
+    {
+      "_id": "5f0f3a388f77bb3acad08da1",
+      "count": 92
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08d9e",
+      "count": 41
+    },
+    {
+      "_id": "5f0f3a388f77bb3acad08da2",
+      "count": 31
+    },
+    {
+      "_id": "5f0f3a388f77bb3acad08da3",
+      "count": 26
+    },
+    {
+      "_id": "5f0f3a388f77bb3acad08da4",
+      "count": 24
+    },
+    {
+      "_id": "5f0f3a378f77bb3acad08da0",
+      "count": 43
+    },
+    {
+      "_id": "5f0f3a368f77bb3acad08d9a",
+      "count": 45
+    }
+  ]
+}
+```
+
+<h3 id="get__api_v1_elections_{election_id}_pus-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+
+<h3 id="get__api_v1_elections_{election_id}_pus-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» success|boolean|false|none|none|
+|» request_time|number|false|none|none|
+|» data|object|false|none|none|
+|»» wards|[object]|false|none|none|
+|»»» status|string|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» state|string|false|none|none|
+|»»» lga_id|number|false|none|none|
+|»»» lga|string|false|none|none|
+|»»» state_constituency_id|number|false|none|none|
+|»»» state_constituency|string|false|none|none|
+|»»» federal_constituency_id|number|false|none|none|
+|»»» federal_constituency|string|false|none|none|
+|»»» senatorial_district_id|number|false|none|none|
+|»»» senatorial_district|string|false|none|none|
+|»»» name|string|false|none|none|
+|»»» code|string|false|none|none|
+|»»» old_name|string|false|none|none|
+|»»» ward_id|number|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» election_wards|[any]|false|none|none|
+|»» status|string|false|none|none|
+|»» is_mapped|boolean|false|none|none|
+|»» _id|string|false|none|none|
+|»» lga|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» state|string|false|none|none|
+|»»» name|string|false|none|none|
+|»»» code|string|false|none|none|
+|»»» lga_id|number|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» election|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» version|number|false|none|none|
+|»»» is_mapped|boolean|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» full_name|string|false|none|none|
+|»»» election_id|number|false|none|none|
+|»»» domain_id|number|false|none|none|
+|»»» domain_type|string|false|none|none|
+|»»» election_type_id|number|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» state|string|false|none|none|
+|»»» election_date|string|false|none|none|
+|»»» domain|string|false|none|none|
+|»»» election_type|string|false|none|none|
+|»»» onModel|string|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» election_id|number|false|none|none|
+|»» state|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» presidential_id|number|false|none|none|
+|»»» presidential|string|false|none|none|
+|»»» name|string|false|none|none|
+|»»» code|string|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» created_at|string|false|none|none|
+|»» updated_at|string|false|none|none|
+|»» __v|number|false|none|none|
+|» results|[object]|false|none|none|
+|»» _id|string|false|none|none|
+|»» count|number|false|none|none|
+|» pus|[object]|false|none|none|
+|»» _id|string|false|none|none|
+|»» count|number|false|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_elections_{election_id}_pu_{pu_id}
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id} \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id} HTTP/1.1
+Host: irev-v2.herokuapp.com
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /api/v1/elections/{election_id}/pu/{pu_id}`
+
+*GET polling unit by id*
+
+<h3 id="get__api_v1_elections_{election_id}_pu_{pu_id}-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|election_id|path|string|true|none|
+|pu_id|path|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "success": true,
+  "request_time": 1677494450333,
+  "data": {
+    "status": "ACTIVE",
+    "_id": "63f8f28b594e164f8146a393",
+    "polling_unit_id": 7,
+    "election_id": 1292,
+    "election": {
+      "status": "ACTIVE",
+      "version": 3,
+      "is_mapped": false,
+      "_id": "63f8f25b594e164f8146a213",
+      "full_name": "Presidential election - 2023-02-25 - Presidential",
+      "election_id": 1292,
+      "domain_id": 1,
+      "domain_type": "App\\Models\\Presidential",
+      "election_type_id": 1,
+      "state_id": 1,
+      "state": "5f0eb6e06dda22674979bf22",
+      "election_date": "2023-02-25T00:00:00.000Z",
+      "domain": "5f0eb67db39f166717b8411f",
+      "election_type": "5f129a04df41d910dcdc1d50",
+      "onModel": "Presidential",
+      "created_at": "2023-02-24T17:22:35.081Z",
+      "updated_at": "2023-02-24T17:22:35.081Z",
+      "__v": 0
+    },
+    "polling_unit": {
+      "status": "ACTIVE",
+      "generation": 1,
+      "db_generation": 1,
+      "is_accredited": 1,
+      "_id": "5f0f44cec440353badb0d687",
+      "state_id": 1,
+      "state": "5f0eb6e06dda22674979bf22",
+      "lga_id": 3103,
+      "lga": {
+        "status": "ACTIVE",
+        "_id": "5f0f397a4d89fc3a883de0c0",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "name": "ABA NORTH",
+        "code": "01",
+        "lga_id": 3103,
+        "created_at": "2020-07-15T17:14:34.782Z",
+        "updated_at": "2020-07-15T17:14:34.782Z",
+        "__v": 0
+      },
+      "ward_id": 17526,
+      "ward": {
+        "status": "ACTIVE",
+        "_id": "5f0f3a368f77bb3acad08d99",
+        "state_id": 1,
+        "state": "5f0eb6e06dda22674979bf22",
+        "lga_id": 3103,
+        "lga": "5f0f397a4d89fc3a883de0c0",
+        "state_constituency_id": 4,
+        "state_constituency": "5f0f371993d20b39ceee1fb9",
+        "federal_constituency_id": 2,
+        "federal_constituency": "5f0f37f32d77c83a06f0f312",
+        "senatorial_district_id": 111,
+        "senatorial_district": "5f0f3958970bd83a6f453a18",
+        "name": "EZIAMA",
+        "code": "01",
+        "old_name": "",
+        "ward_id": 17526,
+        "created_at": "2020-07-15T17:17:42.813Z",
+        "updated_at": "2020-07-15T17:17:42.813Z",
+        "__v": 0
+      },
+      "state_constituency_id": 4,
+      "state_constituency": "5f0f371993d20b39ceee1fb9",
+      "federal_constituency_id": 2,
+      "federal_constituency": "5f0f37f32d77c83a06f0f312",
+      "senatorial_district_id": 111,
+      "senatorial_district": "5f0f3958970bd83a6f453a18",
+      "name": "RAILWAY QUARTERS - RAILWAY QUARTERS I",
+      "code": "001",
+      "pu_code": "01/01/01/001",
+      "old_name": "",
+      "polling_unit_id": 7,
+      "created_at": "2020-07-15T18:02:54.861Z",
+      "updated_at": "2023-02-23T20:06:15.568Z",
+      "__v": 0,
+      "pu_code_string": "010101001"
+    },
+    "name": "RAILWAY QUARTERS - RAILWAY QUARTERS I",
+    "code": "001",
+    "pu_code": "01/01/01/001",
+    "ward_id": 17526,
+    "ward": "5f0f3a368f77bb3acad08d99",
+    "lga_id": 3103,
+    "lga": "5f0f397a4d89fc3a883de0c0",
+    "created_at": "2023-02-24T17:23:24.108Z",
+    "updated_at": "2023-02-26T14:15:01.594Z",
+    "__v": 0,
+    "document": {
+      "status": 1,
+      "_id": "63fb6965c7f64d3b6ed0e9f4",
+      "url": "https://docs.inecelectionresults.net/elections_prod/1292/state/01/lga/01/ward/01/pu/001/001-1677420870.pdf",
+      "size": 3989294,
+      "updated_at": "2023-02-26T14:15:01.594Z"
+    },
+    "document_id": 223806,
+    "session": "1677420900001",
+    "old_document": {
+      "status": 1,
+      "_id": "63fb6964c7f64d3b6ed0e963",
+      "url": "https://docs.inecelectionresults.net/elections_prod/1292/state/01/lga/01/ward/01/pu/001/001-1677420870.pdf",
+      "size": 3989294,
+      "updated_at": "2023-02-26T14:15:01.594Z"
+    }
+  }
+}
+```
+
+<h3 id="get__api_v1_elections_{election_id}_pu_{pu_id}-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+
+<h3 id="get__api_v1_elections_{election_id}_pu_{pu_id}-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» success|boolean|false|none|none|
+|» request_time|number|false|none|none|
+|» data|object|false|none|none|
+|»» status|string|false|none|none|
+|»» _id|string|false|none|none|
+|»» polling_unit_id|number|false|none|none|
+|»» election_id|number|false|none|none|
+|»» election|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» version|number|false|none|none|
+|»»» is_mapped|boolean|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» full_name|string|false|none|none|
+|»»» election_id|number|false|none|none|
+|»»» domain_id|number|false|none|none|
+|»»» domain_type|string|false|none|none|
+|»»» election_type_id|number|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» state|string|false|none|none|
+|»»» election_date|string|false|none|none|
+|»»» domain|string|false|none|none|
+|»»» election_type|string|false|none|none|
+|»»» onModel|string|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»» polling_unit|object|false|none|none|
+|»»» status|string|false|none|none|
+|»»» generation|number|false|none|none|
+|»»» db_generation|number|false|none|none|
+|»»» is_accredited|number|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» state_id|number|false|none|none|
+|»»» state|string|false|none|none|
+|»»» lga_id|number|false|none|none|
+|»»» lga|object|false|none|none|
+|»»»» status|string|false|none|none|
+|»»»» _id|string|false|none|none|
+|»»»» state_id|number|false|none|none|
+|»»»» state|string|false|none|none|
+|»»»» name|string|false|none|none|
+|»»»» code|string|false|none|none|
+|»»»» lga_id|number|false|none|none|
+|»»»» created_at|string|false|none|none|
+|»»»» updated_at|string|false|none|none|
+|»»»» __v|number|false|none|none|
+|»»» ward_id|number|false|none|none|
+|»»» ward|object|false|none|none|
+|»»»» status|string|false|none|none|
+|»»»» _id|string|false|none|none|
+|»»»» state_id|number|false|none|none|
+|»»»» state|string|false|none|none|
+|»»»» lga_id|number|false|none|none|
+|»»»» lga|string|false|none|none|
+|»»»» state_constituency_id|number|false|none|none|
+|»»»» state_constituency|string|false|none|none|
+|»»»» federal_constituency_id|number|false|none|none|
+|»»»» federal_constituency|string|false|none|none|
+|»»»» senatorial_district_id|number|false|none|none|
+|»»»» senatorial_district|string|false|none|none|
+|»»»» name|string|false|none|none|
+|»»»» code|string|false|none|none|
+|»»»» old_name|string|false|none|none|
+|»»»» ward_id|number|false|none|none|
+|»»»» created_at|string|false|none|none|
+|»»»» updated_at|string|false|none|none|
+|»»»» __v|number|false|none|none|
+|»»» state_constituency_id|number|false|none|none|
+|»»» state_constituency|string|false|none|none|
+|»»» federal_constituency_id|number|false|none|none|
+|»»» federal_constituency|string|false|none|none|
+|»»» senatorial_district_id|number|false|none|none|
+|»»» senatorial_district|string|false|none|none|
+|»»» name|string|false|none|none|
+|»»» code|string|false|none|none|
+|»»» pu_code|string|false|none|none|
+|»»» old_name|string|false|none|none|
+|»»» polling_unit_id|number|false|none|none|
+|»»» created_at|string|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»»» __v|number|false|none|none|
+|»»» pu_code_string|string|false|none|none|
+|»» name|string|false|none|none|
+|»» code|string|false|none|none|
+|»» pu_code|string|false|none|none|
+|»» ward_id|number|false|none|none|
+|»» ward|string|false|none|none|
+|»» lga_id|number|false|none|none|
+|»» lga|string|false|none|none|
+|»» created_at|string|false|none|none|
+|»» updated_at|string|false|none|none|
+|»» __v|number|false|none|none|
+|»» document|object|false|none|none|
+|»»» status|number|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» url|string|false|none|none|
+|»»» size|number|false|none|none|
+|»»» updated_at|string|false|none|none|
+|»» document_id|number|false|none|none|
+|»» session|string|false|none|none|
+|»» old_document|object|false|none|none|
+|»»» status|number|false|none|none|
+|»»» _id|string|false|none|none|
+|»»» url|string|false|none|none|
+|»»» size|number|false|none|none|
+|»»» updated_at|string|false|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get__api_v1_elections_{election_id}_pu_{pu_id}_accreditation
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}/accreditation \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}/accreditation HTTP/1.1
+Host: irev-v2.herokuapp.com
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json'
+};
+
+fetch('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}/accreditation',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}/accreditation',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}/accreditation', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}/accreditation', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}/accreditation");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://irev-v2.herokuapp.com/api/v1/elections/{election_id}/pu/{pu_id}/accreditation", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /api/v1/elections/{election_id}/pu/{pu_id}/accreditation`
+
+*GET accreditation by polling unit id*
+
+<h3 id="get__api_v1_elections_{election_id}_pu_{pu_id}_accreditation-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|election_id|path|string|true|none|
+|pu_id|path|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "success": true,
+  "request_time": 1677494450313,
+  "data": null
+}
+```
+
+<h3 id="get__api_v1_elections_{election_id}_pu_{pu_id}_accreditation-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+
+<h3 id="get__api_v1_elections_{election_id}_pu_{pu_id}_accreditation-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» success|boolean|false|none|none|
+|» request_time|number|false|none|none|
+|» data|object|false|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
